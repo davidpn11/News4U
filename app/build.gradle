@@ -52,6 +52,9 @@ dependencies {
 
     // logger
     compile 'com.jakewharton.timber:timber:4.5.1'
+
+    // Realm
+    compile 'io.realm:realm-android:0.82.1'
 }
 
 

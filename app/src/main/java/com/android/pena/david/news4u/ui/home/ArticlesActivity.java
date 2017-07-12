@@ -2,11 +2,8 @@ package com.android.pena.david.news4u.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,20 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
-import com.android.pena.david.news4u.utils.gson.ArticleTypeAdapter;
+import com.android.pena.david.news4u.utils.db.ArticleRealmController;
 import com.android.pena.david.news4u.utils.network.NewYorkTimesController;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 
 public class ArticlesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,7 +32,7 @@ public class ArticlesActivity extends AppCompatActivity
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.viewpager) ViewPager viewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
-
+    private NewYorkTimesController  newYorkTimesController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +45,10 @@ public class ArticlesActivity extends AppCompatActivity
         setViewPager();
         setDrawer();
 
-        NewYorkTimesController  newYorkTimesController = new NewYorkTimesController(this);
+        newYorkTimesController = new NewYorkTimesController(this,getApplication());
         newYorkTimesController.getArticles();
+        final CategoryDialog dialog = new CategoryDialog();
+        dialog.show(getSupportFragmentManager(),"tag");
     }
 
 
@@ -66,6 +59,12 @@ public class ArticlesActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        newYorkTimesController.close();
     }
 
     @Override

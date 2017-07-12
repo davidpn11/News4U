@@ -2,12 +2,16 @@ package com.android.pena.david.news4u.model;
 
 import java.util.List;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by david on 06/07/17.
  */
 
-public class Article {
-    private Long id;
+public class Article extends RealmObject{
+    @PrimaryKey
+    private String id;
     private String url;
     private String adxKeywords;
     private String section;
@@ -17,7 +21,7 @@ public class Article {
     private String publishedDate;
     private Media media;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -53,7 +57,7 @@ public class Article {
         return media;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

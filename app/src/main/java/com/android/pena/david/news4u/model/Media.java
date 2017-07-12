@@ -2,11 +2,15 @@ package com.android.pena.david.news4u.model;
 
 import java.util.List;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by david on 06/07/17.
  */
 
-public class Media {
+public class Media extends RealmObject{
+    @PrimaryKey
     private String url;
     private String format;
 

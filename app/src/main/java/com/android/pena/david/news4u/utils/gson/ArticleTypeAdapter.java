@@ -39,7 +39,7 @@ public class ArticleTypeAdapter extends TypeAdapter {
                             switch (in.nextName()){
 
                                 case "id":
-                                    article.setId(Long.valueOf(in.nextString()));
+                                    article.setId(in.nextString());
                                     break;
                                 case "title":
                                     article.setTitle(in.nextString());
