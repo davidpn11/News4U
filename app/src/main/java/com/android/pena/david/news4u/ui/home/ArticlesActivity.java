@@ -16,12 +16,11 @@ import android.view.MenuItem;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
-import com.android.pena.david.news4u.utils.db.ArticleRealmController;
-import com.android.pena.david.news4u.utils.network.NewYorkTimesController;
+import com.android.pena.david.news4u.utils.network.NYTController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
+import timber.log.Timber;
 
 public class ArticlesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +31,9 @@ public class ArticlesActivity extends AppCompatActivity
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.viewpager) ViewPager viewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
-    private NewYorkTimesController  newYorkTimesController;
+    private NYTController NYTController;
+    private CategoryDialog dialog;
+    private final String DIALOG_TAG ="CATEGORIES_SELECTOR_TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,18 @@ public class ArticlesActivity extends AppCompatActivity
         setViewPager();
         setDrawer();
 
-        newYorkTimesController = new NewYorkTimesController(this,getApplication());
-        newYorkTimesController.getArticles();
-        final CategoryDialog dialog = new CategoryDialog();
-        dialog.show(getSupportFragmentManager(),"tag");
+        NYTController = new NYTController(this,getApplication());
+        NYTController.fetchArticles();
+        dialog = new CategoryDialog();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(NYTController != null){
+            Timber.d(NYTController.getSelectedCategories().toString());
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -64,7 +71,7 @@ public class ArticlesActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        newYorkTimesController.close();
+        NYTController.close();
     }
 
     @Override
@@ -82,9 +89,9 @@ public class ArticlesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        if (id == R.id.action_filter) {
+            dialog.show(getSupportFragmentManager(),DIALOG_TAG);
+        }
 
         return super.onOptionsItemSelected(item);
     }

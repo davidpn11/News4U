@@ -13,6 +13,7 @@
     <string name="action_search">Search</string>
     <string name="action_filter">Filter</string>
     <string name="action_refresh">Refresh</string>
+    <string name="dialog_category">Categories</string>
 
 
     <string-array name="tab_titles">
@@ -22,12 +23,12 @@
 
     <string-array name="categories">
         <item>Arts</item>
-        <item>Automobiles</item>
         <item>Books</item>//
         <item>Health</item>//
         <item>Movies</item>
         <item>Science</item>
         <item>Sports</item>
+        <item>Style</item>
         <item>Technology</item>
         <item>World</item>
     </string-array>

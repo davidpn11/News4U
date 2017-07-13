@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="grid_color">
-        <item>@color/grid_color1</item>
-        <item>@color/grid_color2</item>
-        <item>@color/grid_color3</item>
-        <item>@color/grid_color4</item>
-        <item>@color/grid_color5</item>
-        <item>@color/grid_color6</item>
-        <item>@color/grid_color7</item>
-        <item>@color/grid_color8</item>
-        <item>@color/grid_color9</item>
+        <item>@drawable/grid_item1</item>
+        <item>@drawable/grid_item2</item>
+        <item>@drawable/grid_item3</item>
+        <item>@drawable/grid_item4</item>
+        <item>@drawable/grid_item5</item>
+        <item>@drawable/grid_item6</item>
+        <item>@drawable/grid_item7</item>
+        <item>@drawable/grid_item8</item>
+        <item>@drawable/grid_item9</item>
     </array>
 </resources>

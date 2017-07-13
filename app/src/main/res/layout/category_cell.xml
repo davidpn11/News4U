@@ -7,8 +7,9 @@
 
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_cell"
         android:layout_width="100dp"
-        android:background="@drawable/grid_item_background"
+        android:background="@drawable/grid_item1"
         android:layout_height="100dp">
 
         <ImageView

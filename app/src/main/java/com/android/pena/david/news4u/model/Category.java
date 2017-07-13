@@ -1,5 +1,8 @@
 package com.android.pena.david.news4u.model;
 
+
+
+import io.realm.CategoryRealmProxy;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
