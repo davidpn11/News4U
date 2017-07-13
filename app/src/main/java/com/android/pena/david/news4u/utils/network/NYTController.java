@@ -34,7 +34,7 @@ public class NYTController {
     public NYTController(Context context, Application application) {
         this.mContext = context;
         realm = Realm.getDefaultInstance();
-          ArticleDataHelper.clearAll(realm);
+     //     ArticleDataHelper.clearAll(realm);
     }
 
     public void fetchArticles(){

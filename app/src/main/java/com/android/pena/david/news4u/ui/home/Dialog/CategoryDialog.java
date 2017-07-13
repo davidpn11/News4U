@@ -1,8 +1,6 @@
 package com.android.pena.david.news4u.ui.home.Dialog;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,16 +13,11 @@ import android.widget.Button;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.utils.db.CategoryDataHelper;
-import com.android.pena.david.news4u.utils.network.NYTController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
-import timber.log.Timber;
 
 /**
  * Created by david on 11/07/17.

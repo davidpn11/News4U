@@ -3,7 +3,6 @@ package com.android.pena.david.news4u.ui.home.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,8 +14,6 @@ import android.widget.TextView;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.utils.generalUtils;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,10 +27,11 @@ import timber.log.Timber;
 
 public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapter.ViewHolder> {
 
-    public RealmResults<Category> categories;
+    private RealmResults<Category> categories;
     private Context mContext;
-    public Bitmap check_img;
+    private Bitmap check_img;
     protected Realm realm;
+
     public CategoryGridAdapter(Context context, RealmResults<Category> categories){
         this.categories = categories;
         this.mContext = context;

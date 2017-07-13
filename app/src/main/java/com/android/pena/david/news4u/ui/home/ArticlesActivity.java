@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.android.pena.david.news4u.R;
+import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
 import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.utils.network.NYTController;
@@ -31,6 +32,7 @@ public class ArticlesActivity extends AppCompatActivity
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.viewpager) ViewPager viewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
+
     private NYTController NYTController;
     private CategoryDialog dialog;
     private final String DIALOG_TAG ="CATEGORIES_SELECTOR_TAG";
@@ -47,7 +49,7 @@ public class ArticlesActivity extends AppCompatActivity
         setDrawer();
 
         NYTController = new NYTController(this,getApplication());
-        NYTController.fetchArticles();
+       //NYTController.fetchArticles();
         dialog = new CategoryDialog();
     }
 
