@@ -1,5 +1,8 @@
 package com.android.pena.david.news4u.ui.home.Dialog;
 
+/**
+ * Created by david on 14/07/17.
+ */
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,10 +23,6 @@ import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import timber.log.Timber;
-
-/**
- * Created by david on 11/07/17.
- */
 
 public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapter.ViewHolder> {
 

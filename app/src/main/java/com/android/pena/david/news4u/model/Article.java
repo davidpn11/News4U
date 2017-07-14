@@ -21,6 +21,8 @@ public class Article extends RealmObject{
     private String publishedDate;
     private Media media;
 
+    public Article() {
+    }
     public String getId() {
         return id;
     }
@@ -93,6 +95,4 @@ public class Article extends RealmObject{
         this.media = media;
     }
 
-    public Article() {
-    }
 }

@@ -1,8 +1,8 @@
 package com.android.pena.david.news4u.ui.home.Dialog;
 
+import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,13 +18,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
-
 /**
- * Created by david on 11/07/17.
+ * Created by david on 14/07/17.
  */
 
 public class CategoryDialog extends DialogFragment implements View.OnClickListener {
-
 
     @BindView(R.id.dialog_recyclerview) RecyclerView dialogRecyclerView;
     @BindView(R.id.btn_submit) Button submitBtn;
@@ -33,6 +31,12 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
     Realm realm;
     public CategoryDialog() {
 
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimator;
     }
 
     @Nullable
@@ -51,6 +55,8 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
 
         return view;
     }
+
+
 
     @Override
     public void onClick(View v) {

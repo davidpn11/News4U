@@ -10,21 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc3cbaf8-236b-4111-9636-c3852e9491ca" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryDialog.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryGridAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryGridAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/NewsPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/NewsPagerAdapter.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryGridAdapter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/article_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/article_row.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/category_cell.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/category_cell.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="News4U.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -131,74 +129,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArticlesActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MostSharedFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostSharedFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MostPopularFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding>
-                <element signature="e#2010#2011#0" expanded="true" />
-                <element signature="e#2062#2063#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gradle-wrapper.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoryDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+            <state relative-caret-position="165">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -207,23 +142,89 @@
       <file leaf-file-name="ArticlesAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="86" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
+            <state relative-caret-position="225">
+              <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1347#1348#0" expanded="true" />
-                <element signature="e#1385#1386#0" expanded="true" />
+                <element signature="e#1631#1632#0" expanded="true" />
+                <element signature="e#1669#1670#0" expanded="true" />
+                <element signature="e#2898#2899#0" expanded="true" />
+                <element signature="e#2933#2934#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsPagerAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/NewsPagerAdapter.java">
+      <file leaf-file-name="ArticlesActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anim_in.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/anim_in.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anim_out.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/anim_out.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="70" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoryDialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="38" column="90" selection-start-line="38" selection-start-column="90" selection-end-line="38" selection-end-column="90" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2023#2024#0" expanded="true" />
+                <element signature="e#2048#2049#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoryGridAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryGridAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1751#1752#0" expanded="true" />
+                <element signature="e#1791#1792#0" expanded="true" />
+                <element signature="e#1823#1824#0" expanded="true" />
+                <element signature="e#1852#1853#0" expanded="true" />
+                <element signature="e#5265#5745#0" expanded="true" />
+                <element signature="e#5744#5745#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -231,8 +232,21 @@
       <file leaf-file-name="article_row.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/article_row.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+            <state relative-caret-position="135">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialog_grid.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_grid.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="44" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -250,6 +264,7 @@
         <option value="layoutResourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -1830,7 +1845,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4498541223000" />
+        <entry key="$PROJECT_DIR$" value="4498626253000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2188,14 +2203,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NewYorkTimesClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NewYorkTimesAPI.java" />
-        <option value="$PROJECT_DIR$/app/.gitignore" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Media.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/gson/ArticleTypeAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/ArticleController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/News4UApp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Categories.java" />
@@ -2205,12 +2215,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/button_negative_text_drawable.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NewYorkTimesController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/ArticleNYTController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/RealmController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Category.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/category_cell.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/grid_item_background.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/grid_item2.xml" />
@@ -2224,21 +2232,28 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/array.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/AnimationUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/generalUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryGridAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryRealmController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/ArticleDataHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryDataHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_grid.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_popular.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTController.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/NewsPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryGridAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/article_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryGridAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/article_row.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/article_row_ripple.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/category_cell.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryDialog.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryGridAdapter.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/anim/anim_in.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/anim/anim_out.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
       </list>
     </option>
   </component>
@@ -2508,6 +2523,166 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anim" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news4u" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news4u" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news4u" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news4u" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dialog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -2545,6 +2720,7 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/anim" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
     </key>
@@ -2947,7 +3123,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49062845" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49062845" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2765568" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2998,10 +3174,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_camera.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_gallery.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_manage.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_send.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_share.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_slideshow.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_negative_text_drawable.xml">
@@ -3027,14 +3199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/side_nav_bar.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3050,17 +3214,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/category_cell.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -3073,24 +3226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/grid_item2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -3173,17 +3308,6 @@
           <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_grid.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryDataHelper.java">
@@ -3271,45 +3395,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/article_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/NewsPagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryGridAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/dialog/CategoryDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -3322,14 +3411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -3337,18 +3418,6 @@
           <folding>
             <element signature="e#2010#2011#0" expanded="true" />
             <element signature="e#2062#2063#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="86" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1347#1348#0" expanded="true" />
-            <element signature="e#1385#1386#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3369,10 +3438,165 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+          <folding>
+            <element signature="e#1800#1801#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/category_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/article_row_ripple.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/grid_item2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="9" selection-start-line="1" selection-start-column="1" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/article_row.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_grid.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryGridAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1751#1752#0" expanded="true" />
+            <element signature="e#1791#1792#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1852#1853#0" expanded="true" />
+            <element signature="e#5265#5745#0" expanded="true" />
+            <element signature="e#5744#5745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="165">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/anim_in.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1631#1632#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#2898#2899#0" expanded="true" />
+            <element signature="e#2933#2934#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/anim_out.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="38" column="90" selection-start-line="38" selection-start-column="90" selection-end-line="38" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2023#2024#0" expanded="true" />
+            <element signature="e#2048#2049#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="70" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="70" />
           <folding />
         </state>
       </provider>
