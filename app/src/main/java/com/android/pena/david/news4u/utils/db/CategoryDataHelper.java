@@ -10,6 +10,7 @@ import com.android.pena.david.news4u.model.Category;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import timber.log.Timber;
 
 /**
  * Created by david on 11/07/17.
@@ -45,8 +46,9 @@ public class CategoryDataHelper {
         return realm.where(Category.class).findAll().size();
     }
 
+
     public static void startCategory(Realm realm,final Application application){
-        if(hasCategories(realm)) {
+
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
@@ -54,8 +56,9 @@ public class CategoryDataHelper {
                     for (int i = 0; i < categories.length; i++) {
                         realm.copyToRealm(new Category(categories[i]));
                     }
+                    Timber.d("Categories added!");
                 }
             });
         }
-    }
+
 }

@@ -47,7 +47,9 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
         View view = inflater.inflate(R.layout.fragment_popular,container,false);
         ButterKnife.bind(this,view);
         refreshArticles.setOnRefreshListener(this);
-        articlesList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setAutoMeasureEnabled(false);
+        articlesList.setLayoutManager(linearLayoutManager);
         RealmResults<Article> articles = ArticleDataHelper.getArticles(realm);
         ArticlesAdapter articlesAdapter = new ArticlesAdapter(getContext(),articles);
         articlesList.setAdapter(articlesAdapter);
