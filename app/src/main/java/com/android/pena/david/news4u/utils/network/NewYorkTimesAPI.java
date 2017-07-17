@@ -15,8 +15,8 @@ import retrofit2.http.Query;
 public interface NewYorkTimesAPI {
 
     @GET("mostviewed/{category}/1.json")
-    Call<List<Article>> getMostViewdArticles(@Path("category") String category,
-                                             @Query("api-key") String apiKey);
+    Call<List<Article>> getMostViewedArticles(@Path("category") String category,
+                                              @Query("api-key") String apiKey);
 
     @GET("mostshared/{category}/1.json")
     Call<List<Article>> getMostSharedArticles(@Path("category") String category,

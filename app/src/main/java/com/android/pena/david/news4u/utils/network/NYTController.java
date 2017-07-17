@@ -38,9 +38,9 @@ public class NYTController {
         //CategoryDataHelper.startCategory(realm,application);
     }
 
-    public void fetchArticles(){
+    public void fetchMostPopularArticles(String category){
         final NewYorkTimesAPI apiService = NewYorkTimesClient.getClient().create(NewYorkTimesAPI.class);
-        Call<List<Article>> apiCall = apiService.getMostViewdArticles("Arts",API_KEY_VALUE);
+        Call<List<Article>> apiCall = apiService.getMostViewedArticles(category,API_KEY_VALUE);
         Timber.d(apiCall.request().url().toString());
 
         apiCall.enqueue(new Callback<List<Article>>() {
@@ -48,7 +48,27 @@ public class NYTController {
             public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                 articles = response.body();
                 Timber.d("Num: "+articles.size());
-                ArticleDataHelper.insertArticles(realm,articles);
+                ArticleDataHelper.insertViewedArticles(realm,articles);
+            }
+            @Override
+            public void onFailure(Call<List<Article>> call, Throwable t) {
+                Toast.makeText(mContext, "FALHOU", Toast.LENGTH_SHORT).show();
+                Timber.e(t.getMessage());
+            }
+        });
+    }
+
+    public void fetchMostSharedArticles(String category){
+        final NewYorkTimesAPI apiService = NewYorkTimesClient.getClient().create(NewYorkTimesAPI.class);
+        Call<List<Article>> apiCall = apiService.getMostSharedArticles(category,API_KEY_VALUE);
+        Timber.d(apiCall.request().url().toString());
+
+        apiCall.enqueue(new Callback<List<Article>>() {
+            @Override
+            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
+                articles = response.body();
+                Timber.d("Num: "+articles.size());
+                ArticleDataHelper.insertSharedArticles(realm,articles);
             }
             @Override
             public void onFailure(Call<List<Article>> call, Throwable t) {
@@ -63,6 +83,9 @@ public class NYTController {
         realm.close();
     }
 
+    public int countArticles(){
+        return ArticleDataHelper.getCount(realm);
+    }
 
     public RealmResults<Category> getSelectedCategories(){
         return CategoryDataHelper.getSeletedCategories(realm);

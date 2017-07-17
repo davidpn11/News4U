@@ -19,10 +19,21 @@ public class Article extends RealmObject{
     private String title;
     private String _abstract;
     private String publishedDate;
+    private String selection;
     private Media media;
 
     public Article() {
     }
+
+
+    public String getSelection() {
+        return selection;
+    }
+
+    public void setSelection(String selection) {
+        this.selection = selection;
+    }
+
     public String getId() {
         return id;
     }

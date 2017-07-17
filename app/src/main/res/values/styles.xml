@@ -69,6 +69,15 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="TextStyle.Detail.Title" parent="TextStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
     <style name="Button" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/darkGrey</item>
         <item name="android:layout_height">48dp</item>

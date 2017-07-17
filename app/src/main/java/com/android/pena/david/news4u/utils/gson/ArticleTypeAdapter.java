@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.Media;
+import com.android.pena.david.news4u.utils.generalUtils;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -40,6 +41,11 @@ public class ArticleTypeAdapter extends TypeAdapter {
 
                                 case "id":
                                     article.setId(in.nextString());
+                                    article.setSelection(generalUtils.VIEWED_TAG);
+                                    break;
+                                case "asset_id":
+                                    article.setId(in.nextString());
+                                    article.setSelection(generalUtils.SHARED_TAG);
                                     break;
                                 case "title":
                                     article.setTitle(in.nextString());

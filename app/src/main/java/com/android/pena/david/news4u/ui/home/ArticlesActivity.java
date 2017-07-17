@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
@@ -49,7 +50,10 @@ public class ArticlesActivity extends AppCompatActivity
         setDrawer();
 
         NYTController = new NYTController(this,getApplication());
-       //NYTController.fetchArticles();
+        NYTController.fetchMostSharedArticles("Arts");
+        NYTController.fetchMostPopularArticles("Arts");
+        Toast.makeText(this, String.valueOf(NYTController.countArticles()), Toast.LENGTH_SHORT).show();
+
         dialog = new CategoryDialog();
     }
 

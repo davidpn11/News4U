@@ -54,7 +54,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bindArticle(articles.get(position));
-        setAnimation(holder.itemView,position);
+       // setAnimation(holder.itemView,position);
     }
 
     @Override
