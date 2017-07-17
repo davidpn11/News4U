@@ -26,6 +26,11 @@
             android:label="@string/saved_name"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:label="@string/saved_name"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

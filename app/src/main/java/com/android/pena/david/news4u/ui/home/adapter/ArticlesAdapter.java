@@ -1,7 +1,10 @@
 package com.android.pena.david.news4u.ui.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +16,11 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
-import com.bumptech.glide.Glide;
+import com.android.pena.david.news4u.ui.detail.DetailActivity;
+import com.android.pena.david.news4u.ui.home.ArticlesActivity;
+import com.android.pena.david.news4u.utils.generalUtils;
+import com.squareup.picasso.Picasso;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,6 +79,8 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     @BindView(R.id.article_category) TextView articleCategory;
     @BindView(R.id.article_layout) ConstraintLayout layout;
 
+    private Article mArticle;
+
     private ViewHolder(View itemView){
         super(itemView);
         ButterKnife.bind(this,itemView);
@@ -79,16 +88,26 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     }
 
     private void bindArticle(Article article){
+        mArticle = article;
         articleTitle.setText(article.getTitle());
         articleCategory.setText(article.getSection());
         if(article.getMedia() != null) {
-            Glide.with(mContext).load(article.getMedia().getUrl()).into(articleImg);
+            Picasso.with(mContext).load(article.getMedia().getUrl()).into(articleImg);
+            ViewCompat.setTransitionName(articleImg,article.getTitle());
         }
     }
 
     @Override
     public void onClick(View v) {
         Timber.d("clicked");
+        Intent intent = new Intent(mContext, DetailActivity.class);
+        intent.putExtra(generalUtils.EXTRA_ARTICLE_TITLE,mArticle.getTitle());
+        intent.putExtra(generalUtils.EXTRA_ARTICLE_ID,mArticle.getMedia().getUrl());
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation((ArticlesActivity) mContext,articleImg,
+                        ViewCompat.getTransitionName(articleImg));
+        mContext.startActivity(intent, options.toBundle());
     }
 }
 }

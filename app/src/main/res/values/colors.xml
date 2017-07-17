@@ -10,6 +10,7 @@
     <color name="yellow">#fff44f</color>
     <color name="transparent">#00000000</color>
     <color name="translucent_white">#88ffffff</color>
+    <color name="lightgrey">#e7e7e7</color>
 
     <!--Grid colors-->
     <color name="grid_color1">#f44336</color>

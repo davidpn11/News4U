@@ -12,6 +12,9 @@ import android.widget.ImageView;
 
 public class generalUtils {
 
+    public static final String EXTRA_ARTICLE_TITLE = "article_title_tag";
+    public static final String EXTRA_ARTICLE_ID = "article_id_tag";
+
     public static void ImageViewAnimatedChange(Context c, final ImageView v, final Bitmap new_image) {
         final Animation anim_out = AnimationUtils.loadAnimation(c, android.R.anim.fade_out);
         final Animation anim_in  = AnimationUtils.loadAnimation(c, android.R.anim.fade_in);

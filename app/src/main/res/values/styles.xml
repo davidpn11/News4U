@@ -45,7 +45,9 @@
 
 
     <style name="TextStyle.Title" parent="TextStyle">
-        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+        <item name="android:textAppearance">@style/TextAppearance.Text.Bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="TextStyle.Title.Sub" parent="TextStyle.Title">
@@ -58,9 +60,13 @@
         <item name="android:textAppearance">@style/TextAppearance.Text.Bold</item>
     </style>
 
-    <style name="TextStyle.Comment" parent="TextStyle">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Text.Italic</item>
+    <style name="TextStyle.Category" parent="TextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+
+        <item name="android:textColor">@color/grid_color4</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="Button" parent="Widget.AppCompat.Button">
