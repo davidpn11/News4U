@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/material_flat"
                 app:layout_collapseMode="parallax"
                 />
 
@@ -45,56 +45,8 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:layout_collapseMode="pin"
                 />
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="ahudashudashudashudashudashudashudashudasuhdhuasd"-->
-            <!--android:layout_gravity="bottom"/>-->
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/article_title"
-                    style="@style/TextStyle.Detail.Title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:paddingTop="25dp"
-                    />
-
-                <TextView
-                    android:id="@+id/article_byline"
-                    style="?android:attr/textAppearanceSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="bajdasjidasjidasjidjasdijasdji"
-                    android:padding="5dp"
-                    android:textColor="#8fff" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/art"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="bajdasjidasjidasjidjasdijasdji"
-                android:padding="5dp"
-                />
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_height="60dp"
@@ -104,4 +56,48 @@
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"
         />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/article_title"
+                    style="@style/TextStyle.Detail.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:id="@+id/article_byline"
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="bajdasjidasjidasjidjasdijasdji"
+                    android:textColor="#8fff" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/article_description"
+                style="@style/TextStyle.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bajdasjidasjidasjidjasdijasdji" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

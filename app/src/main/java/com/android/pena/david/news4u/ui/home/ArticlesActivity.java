@@ -52,7 +52,6 @@ public class ArticlesActivity extends AppCompatActivity
         NYTController = new NYTController(this,getApplication());
         NYTController.fetchMostSharedArticles("Arts");
         NYTController.fetchMostPopularArticles("Arts");
-        Toast.makeText(this, String.valueOf(NYTController.countArticles()), Toast.LENGTH_SHORT).show();
 
         dialog = new CategoryDialog();
     }

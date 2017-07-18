@@ -50,6 +50,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         refreshArticles.setOnRefreshListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setAutoMeasureEnabled(false);
+
         articlesList.setLayoutManager(linearLayoutManager);
         RealmResults<Article> articles = ArticleDataHelper.getMostSharedArticles(realm);
 

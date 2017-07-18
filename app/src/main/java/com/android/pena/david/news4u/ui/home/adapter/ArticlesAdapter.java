@@ -101,13 +101,16 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     public void onClick(View v) {
         Timber.d("clicked");
         Intent intent = new Intent(mContext, DetailActivity.class);
-        intent.putExtra(generalUtils.EXTRA_ARTICLE_TITLE,mArticle.getTitle());
-        intent.putExtra(generalUtils.EXTRA_ARTICLE_ID,mArticle.getMedia().getUrl());
+        intent.putExtra(generalUtils.EXTRA_ARTICLE_ID,mArticle.getId());
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation((ArticlesActivity) mContext,articleImg,
-                        ViewCompat.getTransitionName(articleImg));
-        mContext.startActivity(intent, options.toBundle());
+        if(mArticle.getMedia() != null){
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation((ArticlesActivity) mContext,articleImg,
+                            ViewCompat.getTransitionName(articleImg));
+            mContext.startActivity(intent, options.toBundle());
+        }else{
+            mContext.startActivity(intent);
+        }
     }
 }
 }
