@@ -1,9 +1,12 @@
 package com.android.pena.david.news4u.ui.detail;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
@@ -51,11 +54,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.article_description) TextView articleDescription;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.goto_article) Button gotoArticleBtn;
+    @BindView(R.id.save_fab) FloatingActionButton saveFab;
 
 
     private Realm realm;
     private Article mArticle;
-
+    private Bitmap saveOn,saveOff;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +78,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         if(mArticle != null){
             buildArticle();
         }
+        saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
+        saveOff = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_off);
+        saveFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //generalUtils.ImageViewAnimatedChange(DetailActivity.this,saveFab,saveOn);
+            }
+        });
     }
 
     @Override

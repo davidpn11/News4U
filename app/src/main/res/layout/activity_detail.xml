@@ -49,14 +49,15 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/save_fab"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"
-        android:src="@mipmap/ic_share"
+        android:src="@mipmap/ic_save_off"
         app:layout_anchor="@id/appbar"
+        app:rippleColor="@color/colorPrimaryLight"
         app:layout_anchorGravity="bottom|right|end"
         />
 
@@ -90,7 +91,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="bajdasjidasjidasjidjasdijasdji"
                     android:textColor="#8fff" />
             </LinearLayout>
 
@@ -101,7 +101,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="bajdasjidasjidasjidjasdijasdji" />
+                />
 
             <Button
                 android:id="@+id/goto_article"
@@ -115,11 +115,6 @@
                 android:elevation="16dp"
                 android:background="@drawable/to_article_button"/>
 
-            <!--<WebView-->
-                <!--android:id="@+id/webview"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--/>-->
         </LinearLayout>
 
 
