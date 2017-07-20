@@ -3,17 +3,23 @@
     <string name="home_name">Home</string>
     <string name="saved_name">Saved</string>
     <string name="detail_name"> </string>
+    <string name="goto_article">Open full article</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="powered_by">Powered by</string>
+    <string name="dialog_category">Categories</string>
+    <string name="share_string">Share</string>
+    <!--Menu/Drawer-->
     <string name="nav_news">All Articles</string>
     <string name="nav_save">Saved Articles</string>
     <string name="nav_settings">Settings</string>
     <string name="action_search">Search</string>
     <string name="action_filter">Filter</string>
     <string name="action_refresh">Refresh</string>
-    <string name="dialog_category">Categories</string>
+    <string name="action_share">Share</string>
+    <string name="action_browser">Open in Browser</string>
+
 
 
     <string-array name="tab_titles">
@@ -23,8 +29,8 @@
 
     <string-array name="categories">
         <item>Arts</item>
-        <item>Books</item>//
-        <item>Health</item>//
+        <item>Books</item>
+        <item>Health</item>
         <item>Movies</item>
         <item>Science</item>
         <item>Sports</item>

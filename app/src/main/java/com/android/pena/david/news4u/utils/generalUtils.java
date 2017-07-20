@@ -14,6 +14,7 @@ public class generalUtils {
 
     public static final String EXTRA_ARTICLE_TITLE = "article_title_tag";
     public static final String EXTRA_ARTICLE_ID = "article_id_tag";
+    public static final String EXTRA_ARTICLE_URL = "article_url_tag";
 
 
     public static final String VIEWED_TAG = "most_view";

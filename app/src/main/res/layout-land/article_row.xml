@@ -47,7 +47,7 @@
         android:backgroundTint="@color/lightgrey"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="2dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/article_category">
     </View>
 

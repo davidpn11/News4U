@@ -1,5 +1,6 @@
 package com.android.pena.david.news4u.ui.detail;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,11 +10,16 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
 import android.text.style.TextAppearanceSpan;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
 import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.squareup.picasso.Callback;
@@ -31,21 +37,26 @@ import butterknife.ButterKnife;
 import io.realm.Realm;
 import timber.log.Timber;
 
+import static com.android.pena.david.news4u.utils.generalUtils.EXTRA_ARTICLE_URL;
+
 /**
  * Created by david on 17/07/17.
  */
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.article_img) ImageView articleImg;
     @BindView(R.id.article_title) TextView articleTitle;
     @BindView(R.id.article_byline) TextView articleByLine;
     @BindView(R.id.article_description) TextView articleDescription;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.goto_article) Button gotoArticleBtn;
 
 
     private Realm realm;
     private Article mArticle;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +64,7 @@ public class DetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         realm = Realm.getDefaultInstance();
+        gotoArticleBtn.setOnClickListener(this);
         if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
@@ -64,13 +76,18 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         realm.close();
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent it = new Intent(DetailActivity.this, FullArticleActivity.class);
+        it.putExtra(EXTRA_ARTICLE_URL,mArticle.getUrl());
+        startActivity(it);
+    }
 
     private void buildArticle(){
         try {
@@ -106,6 +123,12 @@ public class DetailActivity extends AppCompatActivity {
 
             articleByLine.setText(ssb);
             articleDescription.setText(mArticle.get_abstract());
+//            web.setWebViewClient(new WebViewClient());
+//            web.getSettings().setLoadsImagesAutomatically(true);
+//            web.getSettings().setJavaScriptEnabled(true);
+//            web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//            web.loadUrl(mArticle.getUrl());
+
 
         } catch (Exception e) {
             Timber.e(e.getMessage());

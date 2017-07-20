@@ -117,6 +117,7 @@ public class ArticlesActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     private void setViewPager(){
         viewPager.setAdapter(new NewsPagerAdapter(getSupportFragmentManager(),
                 ArticlesActivity.this,getResources().getStringArray(R.array.tab_titles)));

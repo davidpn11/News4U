@@ -49,9 +49,12 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:layout_height="60dp"
-        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
         android:src="@mipmap/ic_share"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"
@@ -64,7 +67,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -92,12 +95,34 @@
             </LinearLayout>
 
             <TextView
+
                 android:id="@+id/article_description"
                 style="@style/TextStyle.Description"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="bajdasjidasjidasjidjasdijasdji" />
+
+            <Button
+                android:id="@+id/goto_article"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:text="@string/goto_article"
+                android:elevation="16dp"
+                android:background="@drawable/to_article_button"/>
+
+            <!--<WebView-->
+                <!--android:id="@+id/webview"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--/>-->
         </LinearLayout>
+
+
 
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

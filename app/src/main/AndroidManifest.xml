@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.pena.david.news4u">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".News4UApp"
@@ -24,14 +24,17 @@
         <activity
             android:name=".ui.save.SavedActivity"
             android:label="@string/saved_name"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".ui.detail.DetailActivity"
-            android:parentActivityName=".ui.home.ArticlesActivity"
             android:label=""
-            android:theme="@style/AppTheme">
-        </activity>
+            android:parentActivityName=".ui.home.ArticlesActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:label=""
+            android:name=".ui.fullarticle.FullArticleActivity"
+            android:parentActivityName=".ui.detail.DetailActivity"
+            ></activity>
     </application>
 
 </manifest>
