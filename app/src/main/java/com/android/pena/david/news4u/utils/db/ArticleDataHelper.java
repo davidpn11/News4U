@@ -60,6 +60,8 @@ public class ArticleDataHelper {
 
 
 
+
+
     public static int getCount(Realm realm){
         return realm.where(Article.class).findAll().size();
     }
@@ -75,21 +77,6 @@ public class ArticleDataHelper {
 
         return !realm.allObjects(Article.class).isEmpty();
     }
-
-//    public static boolean insertArticle(Realm realm,final Article article){
-//        try {
-//            realm.executeTransaction(new Realm.Transaction() {
-//                @Override
-//                public void execute(Realm realm) {
-//                    realm.copyToRealm(article);
-//                }
-//            });
-//            return true;
-//        } catch (Exception e) {
-//            Timber.e(e.getMessage());
-//            return false;
-//        }
-//    }
 
 
     public static boolean hasArticle(Realm realm, String id, String selection){

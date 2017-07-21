@@ -22,8 +22,10 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
 import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
+import com.android.pena.david.news4u.utils.db.SavedArticlesDataHelper;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -56,10 +58,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.goto_article) Button gotoArticleBtn;
     @BindView(R.id.save_fab) FloatingActionButton saveFab;
 
-
     private Realm realm;
     private Article mArticle;
     private Bitmap saveOn,saveOff;
+    private boolean saved;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,12 +80,22 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         if(mArticle != null){
             buildArticle();
         }
-        saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
-        saveOff = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_off);
+        checkSaved(mArticle.getId());
         saveFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //generalUtils.ImageViewAnimatedChange(DetailActivity.this,saveFab,saveOn);
+
+            if(!saved){
+                SavedArticle savedArticle = new SavedArticle(mArticle);
+                SavedArticlesDataHelper.saveArticle(realm,savedArticle);
+                saved = true;
+                saveFab.setImageBitmap(saveOn);
+            }else{
+                SavedArticlesDataHelper.deleteArticle(realm, mArticle.getId());
+                saved = false;
+                saveFab.setImageBitmap(saveOff);
+            }
+
             }
         });
     }
@@ -92,6 +104,19 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     protected void onDestroy() {
         super.onDestroy();
         realm.close();
+    }
+
+
+    private void checkSaved(String id){
+        saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
+        saveOff = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_off);
+        if(SavedArticlesDataHelper.hasSavedArticle(realm,id)){
+            saveFab.setImageBitmap(saveOn);
+            saved = true;
+        }else{
+            saveFab.setImageBitmap(saveOff);
+            saved = false;
+        }
     }
 
     @Override
@@ -135,12 +160,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
             articleByLine.setText(ssb);
             articleDescription.setText(mArticle.get_abstract());
-//            web.setWebViewClient(new WebViewClient());
-//            web.getSettings().setLoadsImagesAutomatically(true);
-//            web.getSettings().setJavaScriptEnabled(true);
-//            web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-//            web.loadUrl(mArticle.getUrl());
-
 
         } catch (Exception e) {
             Timber.e(e.getMessage());

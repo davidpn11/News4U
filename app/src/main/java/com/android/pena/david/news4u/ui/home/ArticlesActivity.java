@@ -50,8 +50,8 @@ public class ArticlesActivity extends AppCompatActivity
         setDrawer();
 
         NYTController = new NYTController(this,getApplication());
-        NYTController.fetchMostSharedArticles("Arts");
-        NYTController.fetchMostPopularArticles("Arts");
+       // NYTController.fetchMostSharedArticles("Arts");
+      //  NYTController.fetchMostPopularArticles("Arts");
 
         dialog = new CategoryDialog();
     }

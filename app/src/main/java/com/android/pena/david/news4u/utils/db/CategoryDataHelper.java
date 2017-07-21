@@ -54,7 +54,7 @@ public class CategoryDataHelper {
                 public void execute(Realm realm) {
                     String[] categories = application.getResources().getStringArray(R.array.categories);
                     for (int i = 0; i < categories.length; i++) {
-                        realm.copyToRealm(new Category(categories[i]));
+                        realm.copyToRealmOrUpdate(new Category(categories[i]));
                     }
                     Timber.d("Categories added!");
                 }

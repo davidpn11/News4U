@@ -35,7 +35,7 @@ public class NYTController {
         this.mContext = context;
         realm = Realm.getDefaultInstance();
         //ArticleDataHelper.clearAll(realm);
-        //CategoryDataHelper.startCategory(realm,application);
+       // CategoryDataHelper.startCategory(realm,application);
     }
 
     public void fetchMostPopularArticles(String category){
