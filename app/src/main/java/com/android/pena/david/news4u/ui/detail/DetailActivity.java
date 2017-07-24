@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
@@ -24,6 +25,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
+import com.android.pena.david.news4u.ui.home.adapter.SavedArticlesAdapter;
 import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
 import com.android.pena.david.news4u.utils.db.SavedArticlesDataHelper;
 import com.android.pena.david.news4u.utils.generalUtils;
@@ -75,7 +77,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         Bundle extras = getIntent().getExtras();
         String id = extras.getString(generalUtils.EXTRA_ARTICLE_ID);
-        mArticle = ArticleDataHelper.getArticle(realm,id);
+
+        if(getIntent().getAction().equals(generalUtils.ACTION_ARTICLE)) {
+            mArticle = ArticleDataHelper.getArticle(realm, id);
+        }else if (getIntent().getAction().equals(generalUtils.ACTION_SAVED_ARTICLE)) {
+            mArticle = SavedArticlesDataHelper.getSavedArticle(realm,id);
+        }
 
         if(mArticle != null){
             buildArticle();
@@ -87,13 +94,19 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
             if(!saved){
                 SavedArticle savedArticle = new SavedArticle(mArticle);
-                SavedArticlesDataHelper.saveArticle(realm,savedArticle);
-                saved = true;
-                saveFab.setImageBitmap(saveOn);
+                if(SavedArticlesDataHelper.saveArticle(realm,savedArticle)){
+                    saved = true;
+                    saveFab.setImageBitmap(saveOn);
+                    Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
+                    .show();
+                }
             }else{
-                SavedArticlesDataHelper.deleteArticle(realm, mArticle.getId());
-                saved = false;
-                saveFab.setImageBitmap(saveOff);
+                if(SavedArticlesDataHelper.deleteArticle(realm, mArticle.getId())){
+                    saved = false;
+                    saveFab.setImageBitmap(saveOff);
+                    Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
+                            .show();
+                }
             }
 
             }

@@ -101,6 +101,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     public void onClick(View v) {
         Timber.d("clicked");
         Intent intent = new Intent(mContext, DetailActivity.class);
+        intent.setAction(generalUtils.ACTION_ARTICLE);
         intent.putExtra(generalUtils.EXTRA_ARTICLE_ID,mArticle.getId());
 
         if(mArticle.getMedia() != null){

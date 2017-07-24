@@ -21,6 +21,10 @@
     <string name="action_browser">Open in Browser</string>
 
 
+    <!--Snackbar sentences-->
+    <string name="article_saved">Article Saved!</string>
+    <string name="article_deleted">Article Deleted!</string>
+
 
     <string-array name="tab_titles">
         <item>Most Viewed</item>

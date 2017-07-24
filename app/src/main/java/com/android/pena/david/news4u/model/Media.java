@@ -17,6 +17,11 @@ public class Media extends RealmObject{
     public Media() {
     }
 
+    public Media(SavedMedia media) {
+        this.url = media.getUrl();
+        this.format = media.getFormat();
+    }
+
     public String getUrl() {
         return url;
     }

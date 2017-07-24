@@ -25,6 +25,18 @@ public class Article extends RealmObject{
     public Article() {
     }
 
+    public Article(SavedArticle saved) {
+        this.id = saved.getId();
+        this.url = saved.getUrl();
+        this.adxKeywords = saved.getAdxKeywords();
+        this.section = saved.getSection();
+        this.byline = saved.getByline();
+        this.title = saved.getTitle();
+        this._abstract = saved.get_abstract();
+        this.publishedDate = saved.getPublishedDate();
+        this.selection = saved.getSelection();
+        this.media = new Media(saved.getMedia());
+    }
 
     public String getSelection() {
         return selection;
