@@ -22,6 +22,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.home.ArticlesActivity;
 import com.android.pena.david.news4u.ui.home.adapter.SavedArticlesAdapter;
+import com.android.pena.david.news4u.ui.settings.SettingsActivity;
 import com.android.pena.david.news4u.utils.db.SavedArticlesDataHelper;
 
 import butterknife.BindView;
@@ -91,6 +92,9 @@ public class SavedActivity extends AppCompatActivity
 
         if (id == R.id.nav_articles) {
             finish();
+        }
+        if(id == R.id.nav_settings){
+            startActivity(new Intent(SavedActivity.this, SettingsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

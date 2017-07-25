@@ -3,6 +3,7 @@
     <string name="home_name">Home</string>
     <string name="saved_name">Saved</string>
     <string name="detail_name"> </string>
+    <string name="settings_name">Settings</string>
     <string name="goto_article">Open full article</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -21,6 +22,10 @@
     <string name="action_browser">Open in Browser</string>
 
 
+
+    <!--Preferences-->
+    <string name="pref_browser">browser_default</string>
+    <string name="pref_remove">remove_files</string>
     <!--Snackbar sentences-->
     <string name="article_saved">Article Saved!</string>
     <string name="article_deleted">Article Deleted!</string>

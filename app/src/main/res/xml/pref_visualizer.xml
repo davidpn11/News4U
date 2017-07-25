@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<CheckBoxPreference
+    android:defaultValue="true"
+    android:key="@string/pref_remove"
+    android:title="Auto delete old articles"
+    />
+<CheckBoxPreference
+    android:defaultValue="true"
+    android:key="@string/pref_browser"
+    android:title="Open full articles"
+    android:summaryOn="Open first in app"
+    android:summaryOff="Open first in browser"
+    />
+
+
+
+</PreferenceScreen>

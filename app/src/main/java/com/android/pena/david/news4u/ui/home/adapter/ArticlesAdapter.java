@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,13 +64,22 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     }
     private void setAnimation(View viewToAnimate, int position)
     {
-        // If the bound view wasn't previously displayed on screen, it's animated
+//
         if (position > lastPosition)
         {
             Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
+    }
+
+    public void updateArticles(RealmResults<Article> articles){
+        final ArticlesDiffCallBack diffCallBack = new ArticlesDiffCallBack(this.articles,articles);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
+
+        this.articles.clear();
+        this.articles.addAll(articles);
+        diffResult.dispatchUpdatesTo(this);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

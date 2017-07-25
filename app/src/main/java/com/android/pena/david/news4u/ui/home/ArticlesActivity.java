@@ -18,6 +18,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
 import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
+import com.android.pena.david.news4u.ui.settings.SettingsActivity;
 import com.android.pena.david.news4u.utils.network.NYTController;
 
 import butterknife.BindView;
@@ -104,6 +105,9 @@ public class ArticlesActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_saved) {
             startActivity(new Intent(ArticlesActivity.this, SavedActivity.class));
+        }
+        if(id == R.id.nav_settings){
+            startActivity(new Intent(ArticlesActivity.this, SettingsActivity.class));
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

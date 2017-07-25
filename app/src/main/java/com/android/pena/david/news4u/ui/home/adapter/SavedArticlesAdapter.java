@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +70,16 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
+    }
+
+
+    public void updateArticles(RealmResults<SavedArticle> articles){
+        final SavedArticlesDiffCallBack diffCallBack = new SavedArticlesDiffCallBack(this.articles,articles);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
+
+        this.articles.clear();
+        this.articles.addAll(articles);
+        diffResult.dispatchUpdatesTo(this);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

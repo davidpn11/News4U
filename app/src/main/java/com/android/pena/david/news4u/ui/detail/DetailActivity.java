@@ -1,14 +1,17 @@
 package com.android.pena.david.news4u.ui.detail;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -64,6 +67,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private Article mArticle;
     private Bitmap saveOn,saveOff;
     private boolean saved;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +77,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbar);
         realm = Realm.getDefaultInstance();
         gotoArticleBtn.setOnClickListener(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
@@ -91,24 +96,22 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         saveFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            if(!saved){
-                SavedArticle savedArticle = new SavedArticle(mArticle);
-                if(SavedArticlesDataHelper.saveArticle(realm,savedArticle)){
-                    saved = true;
-                    saveFab.setImageBitmap(saveOn);
-                    Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
-                    .show();
+                if(!saved){
+                    SavedArticle savedArticle = new SavedArticle(mArticle);
+                    if(SavedArticlesDataHelper.saveArticle(realm,savedArticle)){
+                        saved = true;
+                        saveFab.setImageBitmap(saveOn);
+                        Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
+                }else{
+                    if(SavedArticlesDataHelper.deleteArticle(realm, mArticle.getId())){
+                        saved = false;
+                        saveFab.setImageBitmap(saveOff);
+                        Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
                 }
-            }else{
-                if(SavedArticlesDataHelper.deleteArticle(realm, mArticle.getId())){
-                    saved = false;
-                    saveFab.setImageBitmap(saveOff);
-                    Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
-                            .show();
-                }
-            }
-
             }
         });
     }
@@ -118,7 +121,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onDestroy();
         realm.close();
     }
-
 
     private void checkSaved(String id){
         saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
@@ -134,9 +136,18 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        Intent it = new Intent(DetailActivity.this, FullArticleActivity.class);
-        it.putExtra(EXTRA_ARTICLE_URL,mArticle.getUrl());
-        startActivity(it);
+
+        if(sharedPreferences.getBoolean(getResources().getString(R.string.pref_browser),false)){
+            Intent it = new Intent(DetailActivity.this, FullArticleActivity.class);
+            it.putExtra(EXTRA_ARTICLE_URL,mArticle.getUrl());
+            startActivity(it);
+        }else{
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(mArticle.getUrl()));
+            startActivity(i);
+        }
+
+
     }
 
     private void buildArticle(){
