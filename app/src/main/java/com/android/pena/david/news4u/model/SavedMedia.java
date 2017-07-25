@@ -8,7 +8,6 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class SavedMedia extends RealmObject {
-    @PrimaryKey
     private String url;
     private String format;
 

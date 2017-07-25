@@ -23,13 +23,27 @@ public class CategoryDataHelper {
     //clear all objects from Recipe.class
     public static void clearAll(Realm realm) {
 
-        realm.beginTransaction();
-        realm.clear(Category.class);
-        realm.commitTransaction();
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.where(Category.class).findAll().deleteAllFromRealm();
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                // Transaction was a success.
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                // Transaction failed and was automatically canceled.
+            }
+        });
     }
 
-    private static boolean hasCategories(Realm realm){
-        return !realm.allObjects(Category.class).isEmpty();
+    public static boolean hasCategories(Realm realm){
+        return !realm.where(Category.class).findAll().isEmpty();
     }
 
     public static RealmResults<Category> getCategories(Realm realm) {
@@ -48,17 +62,18 @@ public class CategoryDataHelper {
 
 
     public static void startCategory(Realm realm,final Application application){
+        if(hasCategories(realm)) return;
 
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    String[] categories = application.getResources().getStringArray(R.array.categories);
-                    for (int i = 0; i < categories.length; i++) {
-                        realm.copyToRealmOrUpdate(new Category(categories[i]));
-                    }
-                    Timber.d("Categories added!");
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                String[] categories = application.getResources().getStringArray(R.array.categories);
+                for (int i = 0; i < categories.length; i++) {
+                    realm.copyToRealmOrUpdate(new Category(categories[i]));
                 }
-            });
-        }
+                Timber.d("Categories added!");
+            }
+        });
+    }
 
 }

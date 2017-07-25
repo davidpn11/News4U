@@ -19,6 +19,7 @@ import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
 import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
+import com.android.pena.david.news4u.utils.network.DispatcherUtils;
 import com.android.pena.david.news4u.utils.network.NYTController;
 
 import butterknife.BindView;
@@ -51,8 +52,9 @@ public class ArticlesActivity extends AppCompatActivity
         setDrawer();
 
         NYTController = new NYTController(this,getApplication());
-       // NYTController.fetchMostSharedArticles("Arts");
-      //  NYTController.fetchMostPopularArticles("Arts");
+        DispatcherUtils.scheduleNYTReminder(this);
+        //NYTController.fetchMostSharedArticles("Arts");
+        //NYTController.fetchMostPopularArticles("Arts");
 
         dialog = new CategoryDialog();
     }

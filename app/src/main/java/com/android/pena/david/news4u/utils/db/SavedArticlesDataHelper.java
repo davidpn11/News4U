@@ -16,10 +16,26 @@ public class SavedArticlesDataHelper {
 
     public static void clearAll(Realm realm) {
 
-        realm.beginTransaction();
-        realm.clear(SavedArticle.class);
-        realm.clear(SavedMedia.class);
-        realm.commitTransaction();
+
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.where(SavedArticle.class).findAll().deleteAllFromRealm();
+                bgRealm.where(SavedMedia.class).findAll().deleteAllFromRealm();
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                // Transaction was a success.
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                // Transaction failed and was automatically canceled.
+            }
+        });
+
     }
 
     //find all objects in the Recipe.class
@@ -38,11 +54,10 @@ public class SavedArticlesDataHelper {
     //check if Recipe.class is empty
     public static boolean hasSavedArticles(Realm realm) {
 
-        return !realm.allObjects(SavedArticle.class).isEmpty();
+        return !realm.where(SavedArticle.class).findAll().isEmpty();
     }
 
     public static boolean hasSavedArticle(Realm realm,String id) {
-
         RealmResults<SavedArticle> saved = realm.where(SavedArticle.class).equalTo("id",id).findAll();
         if( saved.size() > 0){
             return true;
@@ -53,7 +68,7 @@ public class SavedArticlesDataHelper {
 
     public static boolean saveArticle(Realm realm,final SavedArticle saved_article){
         try {
-            realm.executeTransaction(new Realm.Transaction() {
+            realm.executeTransactionAsync(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
                     realm.copyToRealmOrUpdate(saved_article);
@@ -71,7 +86,7 @@ public class SavedArticlesDataHelper {
 
     public static boolean deleteArticle(Realm realm,final String id){
         try {
-            realm.executeTransaction(new Realm.Transaction() {
+            realm.executeTransactionAsync(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
                     RealmResults<SavedArticle> saved = realm.where(SavedArticle.class).equalTo("id",id).findAll();
