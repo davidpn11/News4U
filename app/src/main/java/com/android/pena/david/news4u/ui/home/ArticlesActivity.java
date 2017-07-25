@@ -36,7 +36,7 @@ public class ArticlesActivity extends AppCompatActivity
     @BindView(R.id.viewpager) ViewPager viewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
 
-    private NYTController NYTController;
+    //private NYTController NYTController;
     private CategoryDialog dialog;
     private static final String DIALOG_TAG ="CATEGORIES_SELECTOR_TAG";
 
@@ -50,21 +50,13 @@ public class ArticlesActivity extends AppCompatActivity
 
         setViewPager();
         setDrawer();
-
-        NYTController = new NYTController(this,getApplication());
         DispatcherUtils.scheduleNYTReminder(this);
-        //NYTController.fetchMostSharedArticles("Arts");
-        //NYTController.fetchMostPopularArticles("Arts");
-
         dialog = new CategoryDialog();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if(NYTController != null){
-            Timber.d(NYTController.getSelectedCategories().toString());
-        }
     }
 
     @Override
@@ -79,7 +71,6 @@ public class ArticlesActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NYTController.close();
     }
 
     @Override

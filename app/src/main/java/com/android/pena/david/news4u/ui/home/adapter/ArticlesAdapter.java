@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 import io.realm.RealmResults;
 import timber.log.Timber;
 
@@ -73,12 +74,11 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         }
     }
 
-    public void updateArticles(RealmResults<Article> articles){
-        final ArticlesDiffCallBack diffCallBack = new ArticlesDiffCallBack(this.articles,articles);
+    public void updateArticles(RealmResults<Article> pArticles){
+        final ArticlesDiffCallBack diffCallBack = new ArticlesDiffCallBack(this.articles,pArticles);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
 
-        this.articles.clear();
-        this.articles.addAll(articles);
+        articles = pArticles;
         diffResult.dispatchUpdatesTo(this);
     }
 

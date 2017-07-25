@@ -23,22 +23,21 @@ public class NYTService extends JobService {
 
     @Override
     public boolean onStartJob(final JobParameters params) {
-        HandlerThread handlerThread = new HandlerThread("SomeOtherThread");
-        handlerThread.start();
-        Timber.e("Start job");
-        NYTController nytController = new NYTController(getApplicationContext(),getApplication());
-        nytController.fetchDailyArticles();
-        nytController.close();
+        try {
+            HandlerThread handlerThread = new HandlerThread("SomeOtherThread");
+            handlerThread.start();
+            Timber.e("Start job");
+            NYTController nytController = new NYTController(getApplicationContext(),getApplication());
+            nytController.checkClearArticles();
+            //nytController.fetchDailyArticles();
+            nytController.close();
 
-        jobFinished(params, true);
-//        Handler handler = new Handler(handlerThread.getLooper());
-//        handler.post(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-        return true;
+            jobFinished(params, true);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

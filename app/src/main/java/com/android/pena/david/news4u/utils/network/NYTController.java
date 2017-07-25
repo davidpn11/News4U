@@ -11,6 +11,7 @@ import com.android.pena.david.news4u.BuildConfig;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.Category;
+import com.android.pena.david.news4u.ui.home.ArticlesActivity;
 import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
 import com.android.pena.david.news4u.utils.db.CategoryDataHelper;
 
@@ -23,7 +24,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
-import static com.android.pena.david.news4u.R.string.pref_remove;
 
 /**
  * Created by david on 06/07/17.
@@ -98,14 +98,13 @@ public class NYTController {
         return CategoryDataHelper.getSeletedCategories(realm);
     }
 
-
-    public void fetchDailyArticles(){
-
-
-        Timber.d("fetch dayley: "+ (Looper.getMainLooper().getThread() == Thread.currentThread()));
-        if(sharedPreferences.getBoolean(mContext.getResources().getString(R.string.pref_remove),false)){
+    public void checkClearArticles(){
+        if(sharedPreferences.getBoolean(mContext.getResources().getString(R.string.pref_remove_key),true)){
             ArticleDataHelper.clearAll(realm);
         }
+    }
+
+    public boolean fetchDailyArticles(){
 
         RealmResults<Category> categories = getSelectedCategories();
 
@@ -114,7 +113,7 @@ public class NYTController {
             fetchMostSharedArticles(cat.getCategory());
             fetchMostPopularArticles(cat.getCategory());
         }
-
+        return true;
     }
 }
 

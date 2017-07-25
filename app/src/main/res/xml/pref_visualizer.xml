@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <CheckBoxPreference
     android:defaultValue="true"
-    android:key="@string/pref_remove"
-    android:title="Auto delete old articles"
+    android:key="@string/pref_remove_key"
+    android:title="@string/pref_remove_title"
     />
 <CheckBoxPreference
     android:defaultValue="true"
-    android:key="@string/pref_browser"
-    android:title="Open full articles"
-    android:summaryOn="Open first in app"
-    android:summaryOff="Open first in browser"
+    android:key="@string/pref_browser_key"
+    android:title="@string/pref_browser_title"
+    android:summaryOn="@string/pref_browser_summary_on"
+    android:summaryOff="@string/pref_browser_summary_off"
     />
 
 

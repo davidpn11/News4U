@@ -17,6 +17,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.ui.home.adapter.ArticlesAdapter;
 import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
+import com.android.pena.david.news4u.utils.network.NYTController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +35,9 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     @BindView(R.id.articles_list) RecyclerView articlesList;
 
     private Realm realm;
+    private NYTController nytController;
+    private ArticlesAdapter articlesAdapter;
+    private RealmResults<Article> articles;
     public MostPopularFragment() {
     }
 
@@ -41,6 +45,7 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         realm = Realm.getDefaultInstance();
+        nytController = new NYTController(getContext(),getActivity().getApplication());
     }
 
     @Nullable
@@ -52,8 +57,10 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setAutoMeasureEnabled(false);
         articlesList.setLayoutManager(linearLayoutManager);
-        RealmResults<Article> articles = ArticleDataHelper.getMostViewedArticles(realm);
-        ArticlesAdapter articlesAdapter = new ArticlesAdapter(getContext(),articles);
+
+        articles = ArticleDataHelper.getMostViewedArticles(realm);
+        articlesAdapter = new ArticlesAdapter(getContext(),articles);
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
                 linearLayoutManager.getOrientation());
         articlesList.addItemDecoration(dividerItemDecoration);
@@ -63,12 +70,19 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
-        refreshArticles.setRefreshing(false);
+        if(nytController.fetchDailyArticles()){
+            articles = ArticleDataHelper.getMostViewedArticles(realm);
+            articles.load();
+            articlesAdapter.updateArticles(articles);
+            refreshArticles.setRefreshing(false);
+        }
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         realm.close();
+        nytController.close();
     }
 }

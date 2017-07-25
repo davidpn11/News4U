@@ -21,7 +21,7 @@ import timber.log.Timber;
 
 public class DispatcherUtils {
 
-    private static final int REMINDER_INTERVAL_MINUTES = 1;
+    private static final int REMINDER_INTERVAL_HOURS = 24;
     private static final int REMINDER_JOB_ID = 101;
 
     private static boolean sInitialized;
@@ -31,7 +31,7 @@ public class DispatcherUtils {
         if(sInitialized) return;
 
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        JobInfo job = getJobInfo(REMINDER_JOB_ID,REMINDER_INTERVAL_MINUTES,new ComponentName(context,NYTService.class));
+        JobInfo job = getJobInfo(REMINDER_JOB_ID,REMINDER_INTERVAL_HOURS,new ComponentName(context,NYTService.class));
 
         int result = jobScheduler.schedule(job);
         if (result == JobScheduler.RESULT_SUCCESS) {
@@ -44,7 +44,7 @@ public class DispatcherUtils {
     }
 
     private static JobInfo getJobInfo(final int id, final long hour, final ComponentName name) {
-        final long interval = TimeUnit.SECONDS.toMillis(hour); // run every hour
+        final long interval = TimeUnit.HOURS.toMillis(hour); // run every hour
         final boolean isPersistent = true; // persist through boot
         final int networkType = JobInfo.NETWORK_TYPE_ANY; // Requires some sort of connectivity
 

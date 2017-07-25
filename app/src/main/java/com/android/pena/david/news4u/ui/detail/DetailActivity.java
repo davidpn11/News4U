@@ -137,7 +137,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
-        if(sharedPreferences.getBoolean(getResources().getString(R.string.pref_browser),false)){
+        if(sharedPreferences.getBoolean(getResources().getString(R.string.pref_browser_key),false)){
             Intent it = new Intent(DetailActivity.this, FullArticleActivity.class);
             it.putExtra(EXTRA_ARTICLE_URL,mArticle.getUrl());
             startActivity(it);
