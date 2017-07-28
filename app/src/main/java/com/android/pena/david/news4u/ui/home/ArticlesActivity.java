@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
@@ -20,11 +19,9 @@ import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
 import com.android.pena.david.news4u.utils.network.DispatcherUtils;
-import com.android.pena.david.news4u.utils.network.NYTController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public class ArticlesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

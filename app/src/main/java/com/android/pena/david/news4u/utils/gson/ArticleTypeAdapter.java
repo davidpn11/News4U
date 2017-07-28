@@ -41,11 +41,11 @@ public class ArticleTypeAdapter extends TypeAdapter {
 
                                 case "id":
                                     article.setId(in.nextString());
-                                    article.setSelection(generalUtils.VIEWED_TAG);
+                               //     article.setSelection(generalUtils.VIEWED_TAG);
                                     break;
                                 case "asset_id":
                                     article.setId(in.nextString());
-                                    article.setSelection(generalUtils.SHARED_TAG);
+                              //      article.setSelection(generalUtils.SHARED_TAG);
                                     break;
                                 case "title":
                                     article.setTitle(in.nextString());

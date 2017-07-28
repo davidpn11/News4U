@@ -61,7 +61,12 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return articles.size();
+        if( articles != null){
+            return articles.size();
+        }else{
+            return 0;
+        }
+
     }
     private void setAnimation(View viewToAnimate, int position)
     {

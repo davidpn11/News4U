@@ -52,13 +52,14 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         linearLayoutManager.setAutoMeasureEnabled(false);
 
         articlesList.setLayoutManager(linearLayoutManager);
-        RealmResults<Article> articles = ArticleDataHelper.getMostSharedArticles(realm);
 
-        ArticlesAdapter articlesAdapter = new ArticlesAdapter(getContext(),articles);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
-                linearLayoutManager.getOrientation());
-        articlesList.addItemDecoration(dividerItemDecoration);
-        articlesList.setAdapter(articlesAdapter);
+        //RealmResults<Article> articles = ArticleDataHelper.getMostSharedArticles(realm);
+
+//        ArticlesAdapter articlesAdapter = new ArticlesAdapter(getContext(),null);
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
+//                linearLayoutManager.getOrientation());
+//        articlesList.addItemDecoration(dividerItemDecoration);
+//        articlesList.setAdapter(articlesAdapter);
         return view;
     }
 
