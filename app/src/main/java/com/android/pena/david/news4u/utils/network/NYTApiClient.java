@@ -5,7 +5,6 @@ import android.widget.Toast;
 
 import com.android.pena.david.news4u.BuildConfig;
 import com.android.pena.david.news4u.model.Article;
-import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
 import com.android.pena.david.news4u.utils.db.NytDataHelper;
 import com.android.pena.david.news4u.utils.gson.ArticleTypeAdapter;
 import com.google.gson.Gson;

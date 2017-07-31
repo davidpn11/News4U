@@ -36,6 +36,9 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
         realm.close();
     }
 
+
+    //-------------------Articles--------------------------
+
     @Override
     public void clearArticles() {
         realm.executeTransaction(new Realm.Transaction() {
@@ -49,158 +52,10 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
     }
 
     @Override
-    public void clearCategories() {
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm bgRealm) {
-                bgRealm.where(Category.class).findAll().deleteAllFromRealm();
-                Timber.d("Categories Cleared");
-            }
-        });
-
-    }
-
-    @Override
-    public void clearSavedArticles() {
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm bgRealm) {
-                bgRealm.where(SavedArticle.class).findAll().deleteAllFromRealm();
-                bgRealm.where(SavedMedia.class).findAll().deleteAllFromRealm();
-                Timber.d("Saved Cleared");
-            }
-        });
-
-    }
-
-    @Override
     public RealmResults<Article> getArticles() {
         return realm.where(Article.class).findAll();
     }
 
-    @Override
-    public RealmResults<Category> getCategories() {
-
-        return realm.where(Category.class).findAll();
-    }
-
-    @Override
-    public RealmResults<SavedArticle> getSavedArticles() {
-        return realm.where(SavedArticle.class).findAllSorted("publishedDate");
-    }
-
-    @Override
-    public int countCategory() {
-        return realm.where(Category.class)
-                .equalTo("active",true)
-                .findAll()
-                .size();
-    }
-
-    @Override
-    public RealmResults<Category> getSeletedCategories() {
-        return realm.where(Category.class)
-                .equalTo("active",true)
-                .findAll();
-    }
-
-    @Override
-    public RealmResults<Article> getMostViewedArticles() {
-        return realm.where(Article.class)
-                .beginGroup()
-                .equalTo("selection", generalUtils.VIEWED_TAG)
-                .or()
-                .equalTo("selection", generalUtils.BOTH_TAG)
-                .endGroup()
-                .findAllSorted("publishedDate");
-    }
-
-    @Override
-    public int countSavedArticles() {
-        return realm.where(SavedArticle.class).findAll().size();
-    }
-
-    @Override
-    public boolean hasCategories() {
-        return !realm.where(Category.class).findAll().isEmpty();
-    }
-
-    @Override
-    public boolean hasSavedArticles() {
-        return !realm.where(SavedArticle.class).findAll().isEmpty();
-    }
-
-    @Override
-    public void startCategory(List<Category> pCategories) {
-        if(hasCategories()) return;
-
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                String[] categories = mContext.getResources().getStringArray(R.array.categories);
-                for (int i = 0; i < categories.length; i++) {
-                    realm.copyToRealmOrUpdate(new Category(categories[i]));
-                }
-                Timber.d("Categories added!");
-            }
-        });
-    }
-
-    @Override
-    public RealmResults<Article> getMostSharedArticles() {
-
-        return realm.where(Article.class)
-                .beginGroup()
-                .equalTo("selection", generalUtils.SHARED_TAG)
-                .or()
-                .equalTo("selection", generalUtils.BOTH_TAG)
-                .endGroup()
-                .findAllSorted("publishedDate");
-    }
-
-    @Override
-    public void insertSavedArticle(final SavedArticle pArticle) {
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm bgRealm) {
-                bgRealm.copyToRealmOrUpdate(pArticle);
-
-            }
-        }, new Realm.Transaction.OnSuccess() {
-            @Override
-            public void onSuccess() {
-                Timber.d("Saved Article Insert - OK");
-            }
-        }, new Realm.Transaction.OnError() {
-            @Override
-            public void onError(Throwable error) {
-                Timber.d("SavedArticles Insert fail:" + error.getMessage());
-            }
-        });
-    }
-
-
-    @Override
-    public void deletedSavedArticle(final String id) {
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm bgRealm) {
-                RealmResults<SavedArticle> saved = realm.where(SavedArticle.class).equalTo("id",id).findAll();
-                saved.clear();
-
-            }
-        }, new Realm.Transaction.OnSuccess() {
-            @Override
-            public void onSuccess() {
-                Timber.d("Saved Article Insert - OK");
-            }
-        }, new Realm.Transaction.OnError() {
-            @Override
-            public void onError(Throwable error) {
-                Timber.d("SavedArticles Insert fail:" + error.getMessage());
-            }
-        });
-    }
 
     @Override
     public int countArticles() {
@@ -227,55 +82,87 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
 
     }
 
-    @Override
-    public void insertViewedArticles(final List<Article> pArticles) {
-        try {
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm bgRealm) {
-                    for (Article article : pArticles) {
-                        if(article.getSelection() == null){
-                            article.setSelection(generalUtils.VIEWED_TAG);
-                        }
-                        else if (hasArticle(article.getId(), generalUtils.SHARED_TAG)) {
-                            article.setSelection(generalUtils.BOTH_TAG);
-                        } else if (hasArticle(article.getId(), generalUtils.BOTH_TAG)) {
-                            break;
-                        }
 
-                        bgRealm.copyToRealmOrUpdate(article);
-                        Timber.d("Articles Insert - OK");
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public Article getArticle(String id) {
+        Article a =realm.where(Article.class).equalTo("id",id).findFirst();
+
+        return realm.where(Article.class).equalTo("id",id).findFirst();
     }
 
     @Override
-    public void insertSharedArticles(final List<Article> pArticles) {
-        try {
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm bgRealm) {
-                    for (Article article : pArticles) {
-                        if(article.getSelection() == null){
-                            article.setSelection(generalUtils.SHARED_TAG);
-                        }
-                        else if (hasArticle(article.getId(), generalUtils.VIEWED_TAG)) {
-                            article.setSelection(generalUtils.BOTH_TAG);
-                        } else if (hasArticle(article.getId(), generalUtils.BOTH_TAG)) {
-                            break;
-                        }
-                        bgRealm.copyToRealmOrUpdate(article);
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public RealmResults<Article> getMostSharedArticles() {
+
+        return realm.where(Article.class)
+                .beginGroup()
+                .equalTo("selection", generalUtils.SHARED_TAG)
+                .or()
+                .equalTo("selection", generalUtils.BOTH_TAG)
+                .endGroup()
+                .findAllSorted("publishedDate");
     }
+
+    @Override
+    public RealmResults<Article> getMostViewedArticles() {
+        return realm.where(Article.class)
+                .beginGroup()
+                .equalTo("selection", generalUtils.VIEWED_TAG)
+                .or()
+                .equalTo("selection", generalUtils.BOTH_TAG)
+                .endGroup()
+                .findAllSorted("publishedDate");
+    }
+
+
+//    @Override
+//    public void insertViewedArticles(final List<Article> pArticles) {
+//        try {
+//            realm.executeTransaction(new Realm.Transaction() {
+//                @Override
+//                public void execute(Realm bgRealm) {
+//                    for (Article article : pArticles) {
+//                        if(article.getSelection() == null){
+//                            article.setSelection(generalUtils.VIEWED_TAG);
+//                        }
+//                        else if (hasArticle(article.getId(), generalUtils.SHARED_TAG)) {
+//                            article.setSelection(generalUtils.BOTH_TAG);
+//                        } else if (hasArticle(article.getId(), generalUtils.BOTH_TAG)) {
+//                            break;
+//                        }
+//
+//                        bgRealm.copyToRealmOrUpdate(article);
+//                        Timber.d("Articles Insert - OK");
+//                    }
+//                }
+//            });
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    @Override
+//    public void insertSharedArticles(final List<Article> pArticles) {
+//        try {
+//            realm.executeTransaction(new Realm.Transaction() {
+//                @Override
+//                public void execute(Realm bgRealm) {
+//                    for (Article article : pArticles) {
+//                        if(article.getSelection() == null){
+//                            article.setSelection(generalUtils.SHARED_TAG);
+//                        }
+//                        else if (hasArticle(article.getId(), generalUtils.VIEWED_TAG)) {
+//                            article.setSelection(generalUtils.BOTH_TAG);
+//                        } else if (hasArticle(article.getId(), generalUtils.BOTH_TAG)) {
+//                            break;
+//                        }
+//                        bgRealm.copyToRealmOrUpdate(article);
+//                    }
+//                }
+//            });
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void insertViewedArticlesAsync(final List<Article> pArticles) {
@@ -337,5 +224,162 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
             }
         });
     }
+
+    //-------------------Categories--------------------------
+
+    @Override
+    public void clearCategories() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.where(Category.class).findAll().deleteAllFromRealm();
+                Timber.d("Categories Cleared");
+            }
+        });
+
+    }
+
+    @Override
+    public RealmResults<Category> getCategories() {
+        RealmResults<Category> categories = realm.where(Category.class).findAll();
+        return categories;
+
+    }
+
+    @Override
+    public int countCategory() {
+        return realm.where(Category.class)
+                .equalTo("active",true)
+                .findAll()
+                .size();
+    }
+
+    @Override
+    public RealmResults<Category> getSeletedCategories() {
+        return realm.where(Category.class)
+                .equalTo("active",true)
+                .findAll();
+    }
+
+    @Override
+    public boolean hasCategories() {
+        return !realm.where(Category.class).findAll().isEmpty();
+    }
+
+
+    @Override
+    public void startCategory() {
+        if(hasCategories()) return;
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                String[] categories = mContext.getResources().getStringArray(R.array.categories);
+                for (int i = 0; i < categories.length; i++) {
+                    realm.copyToRealmOrUpdate(new Category(categories[i]));
+                }
+                Timber.d("Categories added!");
+            }
+        });
+    }
+
+    //-------------------Saved Articles--------------------------
+
+
+
+
+    @Override
+    public void clearSavedArticles() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.where(SavedArticle.class).findAll().deleteAllFromRealm();
+                bgRealm.where(SavedMedia.class).findAll().deleteAllFromRealm();
+                Timber.d("Saved Cleared");
+            }
+        });
+
+    }
+
+
+    @Override
+    public RealmResults<SavedArticle> getSavedArticles() {
+        return realm.where(SavedArticle.class).findAllSorted("publishedDate");
+    }
+
+
+    @Override
+    public int countSavedArticles() {
+        return realm.where(SavedArticle.class).findAll().size();
+    }
+
+
+
+    @Override
+    public boolean hasSavedArticles() {
+        return !realm.where(SavedArticle.class).findAll().isEmpty();
+    }
+
+    @Override
+    public SavedArticle getSavedArticle(String id) {
+        return realm.where(SavedArticle.class).equalTo("id",id).findFirst();
+    }
+
+
+    @Override
+    public boolean isSaved(String id) {
+        if(realm.where(SavedArticle.class).equalTo("id",id).count() > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    @Override
+    public void insertSavedArticle(final SavedArticle pArticle) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.copyToRealmOrUpdate(pArticle);
+
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Timber.d("Saved Article Insert - OK");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Timber.d("SavedArticles Insert fail:" + error.getMessage());
+            }
+        });
+    }
+
+
+    @Override
+    public void deletedSavedArticle(final String id) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                RealmResults<SavedArticle> saved = realm.where(SavedArticle.class).equalTo("id",id).findAll();
+                saved.clear();
+
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Timber.d("Saved Article Insert - OK");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Timber.d("SavedArticles Insert fail:" + error.getMessage());
+            }
+        });
+    }
+
+
 }
 

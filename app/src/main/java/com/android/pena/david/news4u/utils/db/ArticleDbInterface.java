@@ -16,11 +16,12 @@ public interface ArticleDbInterface {
     RealmResults<Article> getArticles();
     RealmResults<Article> getMostViewedArticles();
     RealmResults<Article> getMostSharedArticles();
+    Article getArticle(String id);
     int countArticles();
     boolean hasArticles();
     boolean hasArticle(String id, String selection);
-    void insertViewedArticles(final List<Article> pArticles);
+    //void insertViewedArticles(final List<Article> pArticles);
     void insertViewedArticlesAsync(final List<Article> pArticles);
-    void insertSharedArticles(final List<Article> pArticles);
+    //void insertSharedArticles(final List<Article> pArticles);
     void insertSharedArticlesAsync(final List<Article> pArticles);
 }

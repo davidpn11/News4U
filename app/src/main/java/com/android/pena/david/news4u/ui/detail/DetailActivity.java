@@ -15,11 +15,8 @@ import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.text.style.StyleSpan;
 import android.text.style.TextAppearanceSpan;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,17 +25,13 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
-import com.android.pena.david.news4u.ui.home.adapter.SavedArticlesAdapter;
-import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
-import com.android.pena.david.news4u.utils.db.SavedArticlesDataHelper;
+import com.android.pena.david.news4u.utils.NYTController;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -63,11 +56,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.goto_article) Button gotoArticleBtn;
     @BindView(R.id.save_fab) FloatingActionButton saveFab;
 
-    private Realm realm;
     private Article mArticle;
     private Bitmap saveOn,saveOff;
     private boolean saved;
     private SharedPreferences sharedPreferences;
+    private NYTController nytController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,7 +68,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        realm = Realm.getDefaultInstance();
+
+        nytController = new NYTController(this,getApplication());
         gotoArticleBtn.setOnClickListener(this);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,9 +78,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         String id = extras.getString(generalUtils.EXTRA_ARTICLE_ID);
 
         if(getIntent().getAction().equals(generalUtils.ACTION_ARTICLE)) {
-            mArticle = ArticleDataHelper.getArticle(realm, id);
+            mArticle = nytController.getArticle(id);
+
         }else if (getIntent().getAction().equals(generalUtils.ACTION_SAVED_ARTICLE)) {
-            mArticle = SavedArticlesDataHelper.getSavedArticle(realm,id);
+            mArticle = nytController.getSavedArticle(id);
         }
 
         if(mArticle != null){
@@ -97,20 +92,20 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 if(!saved){
-                    SavedArticle savedArticle = new SavedArticle(mArticle);
-                    if(SavedArticlesDataHelper.saveArticle(realm,savedArticle)){
+                        SavedArticle savedArticle = new SavedArticle(mArticle);
+                        nytController.saveArticle(savedArticle);
                         saved = true;
                         saveFab.setImageBitmap(saveOn);
                         Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
                                 .show();
-                    }
+
                 }else{
-                    if(SavedArticlesDataHelper.deleteArticle(realm, mArticle.getId())){
+                        nytController.deleteArticle(mArticle.getId());
                         saved = false;
                         saveFab.setImageBitmap(saveOff);
                         Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
                                 .show();
-                    }
+
                 }
             }
         });
@@ -119,13 +114,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        realm.close();
     }
 
     private void checkSaved(String id){
         saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
         saveOff = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_off);
-        if(SavedArticlesDataHelper.hasSavedArticle(realm,id)){
+        if(nytController.isSaved(id)){
             saveFab.setImageBitmap(saveOn);
             saved = true;
         }else{

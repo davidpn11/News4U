@@ -1,5 +1,6 @@
 package com.android.pena.david.news4u.utils.db;
 
+import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.SavedArticle;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface SavedArticleDbInterface {
     RealmResults<SavedArticle> getSavedArticles();
     int countSavedArticles();
     boolean hasSavedArticles();
+    boolean isSaved(String id);
+    SavedArticle getSavedArticle(String id);
     void insertSavedArticle(final SavedArticle pArticle);
     void deletedSavedArticle(final String id);
 }

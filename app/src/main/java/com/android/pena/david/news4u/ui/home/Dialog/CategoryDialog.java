@@ -12,11 +12,10 @@ import android.widget.Button;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Category;
-import com.android.pena.david.news4u.utils.db.CategoryDataHelper;
+import com.android.pena.david.news4u.utils.NYTController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 import io.realm.RealmResults;
 /**
  * Created by david on 14/07/17.
@@ -28,7 +27,7 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
     @BindView(R.id.btn_submit) Button submitBtn;
     private RealmResults<Category> pCategories;
     private  CategoryGridAdapter categoryGridAdapter;
-    Realm realm;
+    private NYTController nytController;
     public CategoryDialog() {
 
     }
@@ -44,29 +43,27 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_grid,container);
         ButterKnife.bind(this,view);
-
         dialogRecyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(),3));
-        realm = Realm.getDefaultInstance();
-        pCategories = CategoryDataHelper.getCategories(realm);
+        nytController = new NYTController(getContext(),getActivity().getApplication());
+        pCategories = nytController.getCategories();
         categoryGridAdapter = new CategoryGridAdapter(getContext(),pCategories);
         dialogRecyclerView.setAdapter(categoryGridAdapter);
         submitBtn.setOnClickListener(this);
-
 
         return view;
     }
 
 
-
     @Override
     public void onClick(View v) {
+        nytController.fetchDailyArticles();
         dismiss();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        realm.close();
+        nytController.close();
         categoryGridAdapter.closeRealm();
     }
 }

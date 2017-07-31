@@ -10,20 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.ui.home.adapter.ArticlesAdapter;
 import com.android.pena.david.news4u.utils.NYTController;
-import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
-import timber.log.Timber;
 
 /**
  * Created by david on 05/07/17.

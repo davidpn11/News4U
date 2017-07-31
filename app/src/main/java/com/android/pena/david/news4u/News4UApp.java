@@ -3,7 +3,7 @@ package com.android.pena.david.news4u;
 import android.app.Application;
 
 import com.android.pena.david.news4u.model.Category;
-import com.android.pena.david.news4u.utils.db.CategoryDataHelper;
+import com.android.pena.david.news4u.utils.NYTController;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -23,7 +23,7 @@ public class News4UApp extends Application {
             @Override
             public void execute(Realm realm) {
 
-                if(!CategoryDataHelper.hasCategories(realm)) {
+                if(realm.where(Category.class).findAll().isEmpty()){
                     String[] categories = getApplicationContext().getResources().getStringArray(R.array.categories);
                     for (String category : categories) {
                         realm.copyToRealmOrUpdate(new Category(category));

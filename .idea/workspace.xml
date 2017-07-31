@@ -14,18 +14,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc3cbaf8-236b-4111-9636-c3852e9491ca" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/ArticleDataHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryDataHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/SavedArticlesDataHelper.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/News4UApp.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/News4UApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostSharedFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostSharedFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/save/SavedActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/save/SavedActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/ArticleDbInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/ArticleDbInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryDbInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryDbInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/NytDataHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/NytDataHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/SavedArticleDbInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/SavedArticleDbInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/articles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/articles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/saved_articles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/saved_articles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTApiClient.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTApiClient.java" />
     </list>
     <ignored path="News4U.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,127 +121,69 @@
       <file leaf-file-name="NytDataHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/NytDataHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2850">
-              <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+            <state relative-caret-position="3171">
+              <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3382#3383#0" expanded="true" />
-                <element signature="e#3453#3454#0" expanded="true" />
-                <element signature="e#4781#4957#0" expanded="true" />
-                <element signature="e#4956#4957#0" expanded="true" />
-                <element signature="e#4959#5133#0" expanded="true" />
-                <element signature="e#5132#5133#0" expanded="true" />
-                <element signature="e#5135#5342#0" expanded="true" />
-                <element signature="e#5341#5342#0" expanded="true" />
-                <element signature="e#5460#5723#0" expanded="true" />
-                <element signature="e#5722#5723#0" expanded="true" />
-                <element signature="e#5725#5899#0" expanded="true" />
-                <element signature="e#5898#5899#0" expanded="true" />
-                <element signature="e#5901#6108#0" expanded="true" />
-                <element signature="e#6107#6108#0" expanded="true" />
-                <element signature="e#6163#6164#0" expanded="true" />
-                <element signature="e#6229#6230#0" expanded="true" />
-                <element signature="e#6279#6280#0" expanded="true" />
-                <element signature="e#6349#6350#0" expanded="true" />
-                <element signature="e#6874#7682#0" expanded="true" />
-                <element signature="e#7681#7682#0" expanded="true" />
-                <element signature="e#8863#9552#0" expanded="true" />
-                <element signature="e#9551#9552#0" expanded="true" />
-                <element signature="e#9554#9723#0" expanded="true" />
+                <element signature="e#1139#1457#0" expanded="true" />
+                <element signature="e#1456#1457#0" expanded="true" />
+                <element signature="e#1528#1529#0" expanded="true" />
+                <element signature="e#1587#1588#0" expanded="true" />
+                <element signature="e#1636#1637#0" expanded="true" />
+                <element signature="e#1702#1703#0" expanded="true" />
+                <element signature="e#1752#1753#0" expanded="true" />
+                <element signature="e#1822#1823#0" expanded="true" />
+                <element signature="e#5323#6012#0" expanded="true" />
+                <element signature="e#6011#6012#0" expanded="true" />
+                <element signature="e#6014#6183#0" expanded="true" />
+                <element signature="e#6182#6183#0" expanded="true" />
+                <element signature="e#6185#6387#0" expanded="true" />
+                <element signature="e#6386#6387#0" expanded="true" />
+                <element signature="e#6524#7213#0" expanded="true" />
+                <element signature="e#7212#7213#0" expanded="true" />
+                <element signature="e#7215#7385#0" expanded="true" />
+                <element signature="e#7384#7385#0" expanded="true" />
+                <element signature="e#7387#7589#0" expanded="true" />
+                <element signature="e#7588#7589#0" expanded="true" />
+                <element signature="e#7745#7991#0" expanded="true" />
+                <element signature="e#7990#7991#0" expanded="true" />
+                <element signature="e#8615#8616#0" expanded="true" />
+                <element signature="e#8686#8687#0" expanded="true" />
+                <element signature="e#8813#9232#0" expanded="true" />
+                <element signature="e#9231#9232#0" expanded="true" />
+                <element signature="e#9398#9723#0" expanded="true" />
                 <element signature="e#9722#9723#0" expanded="true" />
-                <element signature="e#10755#10925#0" expanded="true" />
-                <element signature="e#10924#10925#0" expanded="true" />
+                <element signature="e#9945#9946#0" expanded="true" />
+                <element signature="e#10016#10017#0" expanded="true" />
+                <element signature="e#10642#10818#0" expanded="true" />
+                <element signature="e#10817#10818#0" expanded="true" />
+                <element signature="e#10820#10994#0" expanded="true" />
+                <element signature="e#10993#10994#0" expanded="true" />
+                <element signature="e#10996#11203#0" expanded="true" />
+                <element signature="e#11202#11203#0" expanded="true" />
+                <element signature="e#11321#11584#0" expanded="true" />
+                <element signature="e#11583#11584#0" expanded="true" />
+                <element signature="e#11586#11760#0" expanded="true" />
+                <element signature="e#11759#11760#0" expanded="true" />
+                <element signature="e#11762#11969#0" expanded="true" />
+                <element signature="e#11968#11969#0" expanded="true" />
+                <marker date="1501531796000" expanded="false" signature="964:974" ph=" { " />
+                <marker date="1501531796000" expanded="false" signature="988:994" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Article.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java">
+      <file leaf-file-name="DetailActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="20" column="32" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NYTController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="335">
+              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2015#2016#0" expanded="true" />
-                <element signature="e#2079#2080#0" expanded="true" />
-                <element signature="e#2122#2123#0" expanded="true" />
-                <element signature="e#2186#2187#0" expanded="true" />
+                <element signature="e#4265#4266#0" expanded="true" />
+                <element signature="e#4298#4299#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MostPopularFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="71" column="7" selection-start-line="71" selection-start-column="7" selection-end-line="71" selection-end-column="7" />
-              <folding>
-                <element signature="e#1902#2158#0" expanded="true" />
-                <element signature="e#2157#2158#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MostSharedFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostSharedFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="71" column="58" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArticleTypeAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/gson/ArticleTypeAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-364">
-              <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="articles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/articles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-              <folding>
-                <marker date="1501525403000" expanded="false" signature="296:319" ph="&quot;Search&quot;" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="saved_articles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/saved_articles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-              <folding>
-                <marker date="1501525395000" expanded="false" signature="296:319" ph="&quot;Search&quot;" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -2221,7 +2171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/fullarticle/FullArticleActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/fullarticle.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_save.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/star_full.xml" />
@@ -2249,7 +2198,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/SavedArticlesDataHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/CategoryDataHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/News4UApp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/pref_visualizer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java" />
@@ -2264,7 +2212,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/gson/ArticleTypeAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTApiClient.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostSharedFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/SavedArticleDbInterface.java" />
@@ -2272,6 +2219,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/saved_articles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/articles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java" />
       </list>
     </option>
   </component>
@@ -2305,106 +2255,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2716,14 +2567,6 @@
               <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2747,33 +2590,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News4U" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news4u" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="detail" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2812,6 +2629,106 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="News4U" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -2826,7 +2743,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2834,7 +2750,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RealmTest" />
-    <property name="device.picker.selection" value="192.168.56.101:5555" />
+    <property name="device.picker.selection" value="05c3ae040047801f" />
     <property name="add_unversioned_files" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="VectorAssetImportPath" value="$PROJECT_DIR$/../../.." />
@@ -3274,13 +3190,12 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42337376" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2936508" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21940464" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -3288,7 +3203,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18192919" sideWeight="0.4946401" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1923077" sideWeight="0.49342105" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -3301,7 +3215,9 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2936508" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1923077" sideWeight="0.5065789" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -3320,7 +3236,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/save/SavedActivity.java</url>
-          <line>119</line>
+          <line>113</line>
           <properties />
           <option name="timeStamp" value="82" />
         </line-breakpoint>
@@ -3342,40 +3258,28 @@
           <properties />
           <option name="timeStamp" value="114" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java</url>
-          <line>36</line>
-          <properties field="articlesAdapter" class="com.android.pena.david.news4u.ui.home.MostPopularFragment" />
-          <option name="timeStamp" value="113" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java</url>
+          <line>71</line>
+          <properties />
+          <option name="timeStamp" value="119" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="115" />
+      <option name="time" value="120" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/ArticlesDiffCallBack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-129">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/SavedArticlesDiffCallBack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/adapter/SavedArticlesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3486,7 +3390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3529,14 +3432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="139" column="90" selection-start-line="139" selection-start-column="90" selection-end-line="139" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3587,23 +3482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/DispatcherUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/ArticleDbInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -3636,26 +3514,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="43" column="78" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="48" column="45" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3682,14 +3544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
@@ -3706,20 +3560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2015#2016#0" expanded="true" />
-            <element signature="e#2079#2080#0" expanded="true" />
-            <element signature="e#2122#2123#0" expanded="true" />
-            <element signature="e#2186#2187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/SavedArticleDbInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -3732,54 +3572,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="56" column="68" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="68" />
-          <folding>
-            <element signature="e#2156#2352#0" expanded="false" />
-            <element signature="e#2351#2352#0" expanded="false" />
-            <element signature="e#2654#2938#0" expanded="false" />
-            <element signature="e#2937#2938#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/NytDataHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2850">
-          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3382#3383#0" expanded="true" />
-            <element signature="e#3453#3454#0" expanded="true" />
-            <element signature="e#4781#4957#0" expanded="true" />
-            <element signature="e#4956#4957#0" expanded="true" />
-            <element signature="e#4959#5133#0" expanded="true" />
-            <element signature="e#5132#5133#0" expanded="true" />
-            <element signature="e#5135#5342#0" expanded="true" />
-            <element signature="e#5341#5342#0" expanded="true" />
-            <element signature="e#5460#5723#0" expanded="true" />
-            <element signature="e#5722#5723#0" expanded="true" />
-            <element signature="e#5725#5899#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5901#6108#0" expanded="true" />
-            <element signature="e#6107#6108#0" expanded="true" />
-            <element signature="e#6163#6164#0" expanded="true" />
-            <element signature="e#6229#6230#0" expanded="true" />
-            <element signature="e#6279#6280#0" expanded="true" />
-            <element signature="e#6349#6350#0" expanded="true" />
-            <element signature="e#6874#7682#0" expanded="true" />
-            <element signature="e#7681#7682#0" expanded="true" />
-            <element signature="e#8863#9552#0" expanded="true" />
-            <element signature="e#9551#9552#0" expanded="true" />
-            <element signature="e#9554#9723#0" expanded="true" />
-            <element signature="e#9722#9723#0" expanded="true" />
-            <element signature="e#10755#10925#0" expanded="true" />
-            <element signature="e#10924#10925#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/gson/ArticleTypeAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-364">
+        <state relative-caret-position="540">
           <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding />
         </state>
@@ -3813,19 +3611,159 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostSharedFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="71" column="58" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
+        <state relative-caret-position="720">
+          <caret line="67" column="58" selection-start-line="67" selection-start-column="58" selection-end-line="67" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/model/Article.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/NYTService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-25/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="2416" column="0" selection-start-line="2416" selection-start-column="0" selection-end-line="2416" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-fragment/25.3.1/support-fragment-25.3.1-sources.jar!/android/support/v4/app/FragmentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="2014" column="0" selection-start-line="2014" selection-start-column="0" selection-end-line="2014" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/network/DispatcherUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="33" column="106" selection-start-line="33" selection-start-column="106" selection-end-line="33" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/ArticlesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/MostPopularFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="71" column="7" selection-start-line="71" selection-start-column="7" selection-end-line="71" selection-end-column="7" />
+        <state relative-caret-position="297">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/home/Dialog/CategoryDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/NYTController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1270">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
-            <element signature="e#1902#2158#0" expanded="true" />
-            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1954#1955#0" expanded="true" />
+            <element signature="e#1996#1997#0" expanded="true" />
+            <element signature="e#3273#3274#0" expanded="true" />
+            <element signature="e#3322#3323#0" expanded="true" />
+            <element signature="e#3547#3548#0" expanded="true" />
+            <element signature="e#3592#3593#0" expanded="true" />
+            <element signature="e#3636#3637#0" expanded="true" />
+            <element signature="e#3684#3685#0" expanded="true" />
+            <element signature="e#3850#3851#0" expanded="true" />
+            <element signature="e#3904#3905#0" expanded="true" />
+            <element signature="e#3947#3948#0" expanded="true" />
+            <element signature="e#3997#3998#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/utils/db/NytDataHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3171">
+          <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1139#1457#0" expanded="true" />
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1528#1529#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+            <element signature="e#1636#1637#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#5323#6012#0" expanded="true" />
+            <element signature="e#6011#6012#0" expanded="true" />
+            <element signature="e#6014#6183#0" expanded="true" />
+            <element signature="e#6182#6183#0" expanded="true" />
+            <element signature="e#6185#6387#0" expanded="true" />
+            <element signature="e#6386#6387#0" expanded="true" />
+            <element signature="e#6524#7213#0" expanded="true" />
+            <element signature="e#7212#7213#0" expanded="true" />
+            <element signature="e#7215#7385#0" expanded="true" />
+            <element signature="e#7384#7385#0" expanded="true" />
+            <element signature="e#7387#7589#0" expanded="true" />
+            <element signature="e#7588#7589#0" expanded="true" />
+            <element signature="e#7745#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
+            <element signature="e#8615#8616#0" expanded="true" />
+            <element signature="e#8686#8687#0" expanded="true" />
+            <element signature="e#8813#9232#0" expanded="true" />
+            <element signature="e#9231#9232#0" expanded="true" />
+            <element signature="e#9398#9723#0" expanded="true" />
+            <element signature="e#9722#9723#0" expanded="true" />
+            <element signature="e#9945#9946#0" expanded="true" />
+            <element signature="e#10016#10017#0" expanded="true" />
+            <element signature="e#10642#10818#0" expanded="true" />
+            <element signature="e#10817#10818#0" expanded="true" />
+            <element signature="e#10820#10994#0" expanded="true" />
+            <element signature="e#10993#10994#0" expanded="true" />
+            <element signature="e#10996#11203#0" expanded="true" />
+            <element signature="e#11202#11203#0" expanded="true" />
+            <element signature="e#11321#11584#0" expanded="true" />
+            <element signature="e#11583#11584#0" expanded="true" />
+            <element signature="e#11586#11760#0" expanded="true" />
+            <element signature="e#11759#11760#0" expanded="true" />
+            <element signature="e#11762#11969#0" expanded="true" />
+            <element signature="e#11968#11969#0" expanded="true" />
+            <marker date="1501531796000" expanded="false" signature="964:974" ph=" { " />
+            <marker date="1501531796000" expanded="false" signature="988:994" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/pena/david/news4u/ui/detail/DetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="e#4265#4266#0" expanded="true" />
+            <element signature="e#4298#4299#0" expanded="true" />
           </folding>
         </state>
       </provider>

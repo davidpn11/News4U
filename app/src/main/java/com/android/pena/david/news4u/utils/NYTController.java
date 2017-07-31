@@ -4,24 +4,14 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.preference.PreferenceManager;
-import android.widget.Toast;
 
-import com.android.pena.david.news4u.BuildConfig;
-import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.Category;
-import com.android.pena.david.news4u.utils.db.ArticleDataHelper;
-import com.android.pena.david.news4u.utils.db.CategoryDataHelper;
+import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.utils.db.NytDataHelper;
 import com.android.pena.david.news4u.utils.network.NYTApiClient;
 
-import java.util.List;
-
-import io.realm.Realm;
 import io.realm.RealmResults;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import timber.log.Timber;
 
 
@@ -44,7 +34,7 @@ public class NYTController {
         nytApiClient = new NYTApiClient(context);
         dataHelper = new NytDataHelper(context);
 
-
+     //   dataHelper.startCategory();
         Timber.d(dataHelper.getArticles().toString());
         clearArticles();
         fetchDailyArticles();
@@ -69,13 +59,13 @@ public class NYTController {
         return dataHelper.getMostSharedArticles();
     }
 
-    public int countMostViewedArticles(){
-        return dataHelper.getMostViewedArticles().size();
-    }
-
-    public int countMostSharedArticles(){
-        return dataHelper.getMostSharedArticles().size();
-    }
+//    public int countMostViewedArticles(){
+//        return dataHelper.getMostViewedArticles().size();
+//    }
+//
+//    public int countMostSharedArticles(){
+//        return dataHelper.getMostSharedArticles().size();
+//    }
 
     public void clearArticles(){
         dataHelper.clearArticles();
@@ -108,5 +98,44 @@ public class NYTController {
         }
         return true;
     }
+
+
+    public RealmResults<Category> getCategories(){
+        RealmResults<Category>  data = dataHelper.getCategories();
+        return dataHelper.getCategories();
+    }
+
+    public boolean hasCategories(){
+        return dataHelper.hasCategories();
+    }
+
+    public boolean hasSelectedCategories(){
+        if(dataHelper.getSeletedCategories().size() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean isSaved(String id){
+        return dataHelper.isSaved(id);
+    }
+
+    public Article getArticle(String id ){
+        return dataHelper.getArticle(id);
+    }
+
+    public Article getSavedArticle(String id){
+        return new Article(dataHelper.getSavedArticle(id));
+    }
+
+    public void saveArticle(SavedArticle article){
+        dataHelper.insertSavedArticle(article);
+    }
+
+    public void deleteArticle(String id){
+        dataHelper.deletedSavedArticle(id);
+    }
+
 }
 

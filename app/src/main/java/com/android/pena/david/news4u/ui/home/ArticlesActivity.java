@@ -18,6 +18,7 @@ import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
 import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
+import com.android.pena.david.news4u.utils.NYTController;
 import com.android.pena.david.news4u.utils.network.DispatcherUtils;
 
 import butterknife.BindView;
@@ -36,7 +37,7 @@ public class ArticlesActivity extends AppCompatActivity
     //private NYTController NYTController;
     private CategoryDialog dialog;
     private static final String DIALOG_TAG ="CATEGORIES_SELECTOR_TAG";
-
+    private NYTController nytController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +45,14 @@ public class ArticlesActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.home_name));
+        nytController = new NYTController(this,getApplication());
 
         setViewPager();
         setDrawer();
         DispatcherUtils.scheduleNYTReminder(this);
         dialog = new CategoryDialog();
+
+        if(!nytController.hasSelectedCategories()) dialog.show(getSupportFragmentManager(),DIALOG_TAG);
     }
 
     @Override

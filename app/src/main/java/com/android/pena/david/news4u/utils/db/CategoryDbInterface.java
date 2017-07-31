@@ -16,5 +16,5 @@ public interface CategoryDbInterface {
     int countCategory();
     boolean hasCategories();
     RealmResults<Category> getSeletedCategories();
-    void startCategory(final List<Category> pArticles);
+    void startCategory();
 }
