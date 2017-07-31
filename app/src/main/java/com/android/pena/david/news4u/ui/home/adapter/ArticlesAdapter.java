@@ -84,7 +84,8 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
 
         articles = pArticles;
-        diffResult.dispatchUpdatesTo(this);
+        notifyDataSetChanged();
+        //diffResult.dispatchUpdatesTo(this);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
@@ -18,6 +19,7 @@ import com.android.pena.david.news4u.utils.NYTController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import timber.log.Timber;
 
@@ -50,6 +52,15 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
         ButterKnife.bind(this,view);
 
         mArticles = nytController.getMostViewedArticles();
+        mArticles.addChangeListener(new RealmChangeListener<RealmResults<Article>>() {
+            @Override
+            public void onChange(RealmResults<Article> articles) {
+                //Timber.d("On Change: "+mArticles.size());
+                Toast.makeText(getContext(), "On Change: "+mArticles.size(), Toast.LENGTH_SHORT).show();
+                newArticles(articles);
+                refreshArticles.setRefreshing(false);
+            }
+        });
         Timber.d("Got articles: "+mArticles.size());
         setArticlesList();
         return view;
@@ -57,11 +68,9 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
-        //nytController.fetchDailyArticles();
-        Timber.d(nytController.getMostViewedArticles().size()+"");
-        Timber.d(nytController.getMostSharedArticles().size()+"");
+        //Timber.d("Size viewed:"+nytController.countMostViewedArticles());
+        //Timber.d("Size shared:"+nytController.countMostSharedArticles());
         mArticles = nytController.getMostViewedArticles();
-        articlesAdapter.updateArticles(mArticles);
         refreshArticles.setRefreshing(false);
     }
 
@@ -72,15 +81,21 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     }
 
 
+    private void newArticles(RealmResults<Article> new_articles){
+        mArticles = new_articles;
+        articlesAdapter.updateArticles(mArticles);
+    }
+
+
     public void setArticlesList(){
         refreshArticles.setOnRefreshListener(this);
+        refreshArticles.setRefreshing(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setAutoMeasureEnabled(false);
+        refreshArticles.setRefreshing(true);
         articlesList.setLayoutManager(linearLayoutManager);
-
-        Timber.d("creating adapter");
         articlesAdapter = new ArticlesAdapter(getContext(),mArticles);
-        Timber.d("adaptercreated");
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
                 linearLayoutManager.getOrientation());
         articlesList.addItemDecoration(dividerItemDecoration);

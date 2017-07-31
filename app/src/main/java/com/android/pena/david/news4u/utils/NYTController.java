@@ -49,7 +49,7 @@ public class NYTController {
         clearArticles();
         fetchDailyArticles();
         Timber.d("Size: "+dataHelper.getArticles().size());
-        //fetchDailyArticles();
+
     }
 
 
@@ -60,11 +60,21 @@ public class NYTController {
 
 
     public RealmResults<Article> getMostViewedArticles(){
+        fetchDailyViewedArticles();
         return dataHelper.getMostViewedArticles();
     }
 
     public RealmResults<Article> getMostSharedArticles(){
+        fetchDailySharedArticles();
         return dataHelper.getMostSharedArticles();
+    }
+
+    public int countMostViewedArticles(){
+        return dataHelper.getMostViewedArticles().size();
+    }
+
+    public int countMostSharedArticles(){
+        return dataHelper.getMostSharedArticles().size();
     }
 
     public void clearArticles(){
@@ -77,6 +87,24 @@ public class NYTController {
             Timber.d(cat.getCategory());
             nytApiClient.fetchMostPopularArticlesAsync(cat.getCategory(),dataHelper);
             nytApiClient.fetchMostSharedArticlesAsync(cat.getCategory(),dataHelper);
+        }
+        return true;
+    }
+
+    public boolean fetchDailySharedArticles(){
+        RealmResults<Category> categories = dataHelper.getSeletedCategories();
+        for(Category cat : categories){
+            Timber.d(cat.getCategory());
+            nytApiClient.fetchMostSharedArticlesAsync(cat.getCategory(),dataHelper);
+        }
+        return true;
+    }
+
+    public boolean fetchDailyViewedArticles(){
+        RealmResults<Category> categories = dataHelper.getSeletedCategories();
+        for(Category cat : categories){
+            Timber.d(cat.getCategory());
+            nytApiClient.fetchMostPopularArticlesAsync(cat.getCategory(),dataHelper);
         }
         return true;
     }

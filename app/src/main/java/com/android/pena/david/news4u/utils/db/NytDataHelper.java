@@ -95,7 +95,7 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
                 .or()
                 .equalTo("selection", generalUtils.BOTH_TAG)
                 .endGroup()
-                .findAll();
+                .findAllSorted("publishedDate");
     }
 
     @Override
@@ -138,7 +138,7 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
                 .or()
                 .equalTo("selection", generalUtils.BOTH_TAG)
                 .endGroup()
-                .findAll();
+                .findAllSorted("publishedDate");
     }
 
     @Override
@@ -203,7 +203,6 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm bgRealm) {
-                    Timber.d("insert: " + (Looper.getMainLooper().getThread() == Thread.currentThread()));
                     for (Article article : pArticles) {
                         if(article.getSelection() == null){
                             article.setSelection(generalUtils.SHARED_TAG);
@@ -257,7 +256,6 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
-                Timber.d("insert: " + (Looper.getMainLooper().getThread() == Thread.currentThread()));
                 for (Article article : pArticles) {
                     if(article.getSelection() == null){
                         article.setSelection(generalUtils.SHARED_TAG);
