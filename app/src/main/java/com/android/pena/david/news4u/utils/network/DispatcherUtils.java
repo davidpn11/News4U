@@ -45,6 +45,7 @@ public class DispatcherUtils {
 
     private static JobInfo getJobInfo(final int id, final long hour, final ComponentName name) {
         final long interval = TimeUnit.HOURS.toMillis(hour); // run every hour
+        Timber.d(String.valueOf(interval));
         final boolean isPersistent = true; // persist through boot
         final int networkType = JobInfo.NETWORK_TYPE_ANY; // Requires some sort of connectivity
 
@@ -52,7 +53,7 @@ public class DispatcherUtils {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             jobInfo = new JobInfo.Builder(id, name)
-                    .setMinimumLatency(interval)
+                    .setPeriodic(interval)
                     .setRequiredNetworkType(networkType)
                     .setPersisted(isPersistent)
                     .build();

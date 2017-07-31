@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.preference.PreferenceManager;
 
+import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.model.SavedArticle;
@@ -34,12 +35,6 @@ public class NYTController {
         nytApiClient = new NYTApiClient(context);
         dataHelper = new NytDataHelper(context);
 
-     //   dataHelper.startCategory();
-        Timber.d(dataHelper.getArticles().toString());
-        //clearArticles();
-        fetchDailyArticles();
-        Timber.d("Size: "+dataHelper.getArticles().size());
-
     }
 
 
@@ -67,15 +62,19 @@ public class NYTController {
 //        return dataHelper.getMostSharedArticles().size();
 //    }
 
-    public void clearArticles(){
-        dataHelper.clearArticles();
+    public void checkClearArticles(){
+        if(sharedPreferences.getBoolean(mContext.getResources().getString(R.string.pref_remove_key),false)){
+            dataHelper.clearArticles();
+            Timber.d("Articles cleared");
+        }
+
     }
 
     public boolean fetchDailyArticles(){
         RealmResults<Category> categories = dataHelper.getSeletedCategories();
         for(Category cat : categories){
             Timber.d(cat.getCategory());
-            nytApiClient.fetchMostPopularArticlesAsync(cat.getCategory(),dataHelper);
+            nytApiClient.fetchMostPopularArticles(cat.getCategory(),dataHelper);
             nytApiClient.fetchMostSharedArticlesAsync(cat.getCategory(),dataHelper);
         }
         return true;
@@ -94,7 +93,7 @@ public class NYTController {
         RealmResults<Category> categories = dataHelper.getSeletedCategories();
         for(Category cat : categories){
             Timber.d(cat.getCategory());
-            nytApiClient.fetchMostPopularArticlesAsync(cat.getCategory(),dataHelper);
+            nytApiClient.fetchMostPopularArticles(cat.getCategory(),dataHelper);
         }
         return true;
     }

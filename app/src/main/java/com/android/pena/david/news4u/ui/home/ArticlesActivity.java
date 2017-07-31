@@ -49,7 +49,6 @@ public class ArticlesActivity extends AppCompatActivity
 
         setViewPager();
         setDrawer();
-        DispatcherUtils.scheduleNYTReminder(this);
         dialog = new CategoryDialog();
 
         if(!nytController.hasSelectedCategories()) dialog.show(getSupportFragmentManager(),DIALOG_TAG);

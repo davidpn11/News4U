@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 
 
+import com.android.pena.david.news4u.utils.NYTController;
 
 import timber.log.Timber;
 
@@ -24,13 +25,13 @@ public class NYTService extends JobService {
     @Override
     public boolean onStartJob(final JobParameters params) {
         try {
-//            HandlerThread handlerThread = new HandlerThread("SomeOtherThread");
-//            handlerThread.start();
-//            Timber.e("Start job");
-//            NYTController nytController = new NYTController(getApplicationContext(),getApplication());
-//            nytController.checkClearArticles();
-//            //nytController.fetchDailyArticles();
-//            nytController.close();
+            HandlerThread handlerThread = new HandlerThread("SomeOtherThread");
+            handlerThread.start();
+            Timber.e("Start job");
+            NYTController nytController = new NYTController(getApplicationContext(),getApplication());
+            nytController.checkClearArticles();
+            nytController.fetchDailyArticles();
+            nytController.close();
 
             jobFinished(params, true);
             return true;

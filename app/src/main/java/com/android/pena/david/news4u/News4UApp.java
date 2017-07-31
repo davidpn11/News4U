@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.utils.NYTController;
+import com.android.pena.david.news4u.utils.network.DispatcherUtils;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -38,5 +39,6 @@ public class News4UApp extends Application {
                 .initialData(transaction)
                 .build();
         Realm.setDefaultConfiguration(config);
+        DispatcherUtils.scheduleNYTReminder(this);
     }
 }

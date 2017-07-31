@@ -53,28 +53,8 @@ public class NYTApiClient {
     }
 
 
+
     public void fetchMostPopularArticles(String category, final NytDataHelper dataHelper){
-
-        Call<List<Article>> apiCall = apiService.getMostViewedArticles(category,API_KEY_VALUE);
-        Timber.d(apiCall.request().url().toString());
-
-        apiCall.enqueue(new Callback<List<Article>>() {
-            @Override
-            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
-                List<Article> articles = response.body();
-               // Timber.d(articles.toString());
-                dataHelper.insertViewedArticlesAsync(articles);
-
-            }
-            @Override
-            public void onFailure(Call<List<Article>> call, Throwable t) {
-                Toast.makeText(mContext, "FALHOU", Toast.LENGTH_SHORT).show();
-                Timber.e(t.getMessage());
-            }
-        });
-    }
-
-    public void fetchMostPopularArticlesAsync(String category, final NytDataHelper dataHelper){
 
         Call<List<Article>> apiCall = apiService.getMostViewedArticles(category,API_KEY_VALUE);
         Timber.d(apiCall.request().url().toString());
@@ -97,26 +77,6 @@ public class NYTApiClient {
 
 
 
-    public void fetchMostSharedArticles(String category, final NytDataHelper dataHelper){
-
-        Call<List<Article>> apiCall = apiService.getMostSharedArticles(category,API_KEY_VALUE);
-        Timber.d(apiCall.request().url().toString());
-
-        apiCall.enqueue(new Callback<List<Article>>() {
-            @Override
-            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
-                List<Article> articles = response.body();
-                //Timber.d(articles.toString());
-                dataHelper.insertSharedArticlesAsync(articles);
-            }
-            @Override
-            public void onFailure(Call<List<Article>> call, Throwable t) {
-                Toast.makeText(mContext, "FALHOU", Toast.LENGTH_SHORT).show();
-                Timber.e(t.getMessage());
-            }
-        });
-    }
-
     public void fetchMostSharedArticlesAsync(String category, final NytDataHelper dataHelper){
 
         Call<List<Article>> apiCall = apiService.getMostSharedArticles(category,API_KEY_VALUE);
@@ -136,5 +96,7 @@ public class NYTApiClient {
             }
         });
     }
+
+
 
 }
