@@ -36,7 +36,7 @@ public class NYTController {
 
      //   dataHelper.startCategory();
         Timber.d(dataHelper.getArticles().toString());
-        clearArticles();
+        //clearArticles();
         fetchDailyArticles();
         Timber.d("Size: "+dataHelper.getArticles().size());
 
@@ -127,6 +127,10 @@ public class NYTController {
 
     public Article getSavedArticle(String id){
         return new Article(dataHelper.getSavedArticle(id));
+    }
+
+    public RealmResults<SavedArticle> getSavedArticles(){
+        return dataHelper.getSavedArticles();
     }
 
     public void saveArticle(SavedArticle article){

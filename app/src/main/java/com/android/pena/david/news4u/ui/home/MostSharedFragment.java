@@ -50,16 +50,15 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         View view = inflater.inflate(R.layout.fragment_shared,container,false);
         ButterKnife.bind(this,view);
 
-        mArticles = nytController.getMostSharedArticles();
-        setArticlesList();
 
+        mArticles = nytController.getMostSharedArticles();
         mArticles.addChangeListener(new RealmChangeListener<RealmResults<Article>>() {
             @Override
             public void onChange(RealmResults<Article> articles) {
                 newArticles(articles);
-                refreshArticles.setRefreshing(false);
             }
         });
+        setArticlesList();
         return view;
     }
 
@@ -78,6 +77,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     private void newArticles(RealmResults<Article> new_articles){
         mArticles = new_articles;
         articlesAdapter.updateArticles(mArticles);
+        refreshArticles.setRefreshing(false);
     }
 
 
@@ -88,7 +88,6 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         linearLayoutManager.setAutoMeasureEnabled(false);
         refreshArticles.setRefreshing(true);
         articlesList.setLayoutManager(linearLayoutManager);
-
 
         articlesAdapter = new ArticlesAdapter(getContext(),mArticles);
 

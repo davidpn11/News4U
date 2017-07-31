@@ -59,7 +59,6 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
                 refreshArticles.setRefreshing(false);
             }
         });
-        Timber.d("Got articles: "+mArticles.size());
         setArticlesList();
         return view;
     }

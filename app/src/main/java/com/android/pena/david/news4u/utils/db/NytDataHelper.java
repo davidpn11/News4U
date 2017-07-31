@@ -86,7 +86,7 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
     @Override
     public Article getArticle(String id) {
         Article a =realm.where(Article.class).equalTo("id",id).findFirst();
-
+        RealmResults<Article> a2 = getArticles();
         return realm.where(Article.class).equalTo("id",id).findFirst();
     }
 
@@ -114,55 +114,6 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
     }
 
 
-//    @Override
-//    public void insertViewedArticles(final List<Article> pArticles) {
-//        try {
-//            realm.executeTransaction(new Realm.Transaction() {
-//                @Override
-//                public void execute(Realm bgRealm) {
-//                    for (Article article : pArticles) {
-//                        if(article.getSelection() == null){
-//                            article.setSelection(generalUtils.VIEWED_TAG);
-//                        }
-//                        else if (hasArticle(article.getId(), generalUtils.SHARED_TAG)) {
-//                            article.setSelection(generalUtils.BOTH_TAG);
-//                        } else if (hasArticle(article.getId(), generalUtils.BOTH_TAG)) {
-//                            break;
-//                        }
-//
-//                        bgRealm.copyToRealmOrUpdate(article);
-//                        Timber.d("Articles Insert - OK");
-//                    }
-//                }
-//            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    @Override
-//    public void insertSharedArticles(final List<Article> pArticles) {
-//        try {
-//            realm.executeTransaction(new Realm.Transaction() {
-//                @Override
-//                public void execute(Realm bgRealm) {
-//                    for (Article article : pArticles) {
-//                        if(article.getSelection() == null){
-//                            article.setSelection(generalUtils.SHARED_TAG);
-//                        }
-//                        else if (hasArticle(article.getId(), generalUtils.VIEWED_TAG)) {
-//                            article.setSelection(generalUtils.BOTH_TAG);
-//                        } else if (hasArticle(article.getId(), generalUtils.BOTH_TAG)) {
-//                            break;
-//                        }
-//                        bgRealm.copyToRealmOrUpdate(article);
-//                    }
-//                }
-//            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Override
     public void insertViewedArticlesAsync(final List<Article> pArticles) {

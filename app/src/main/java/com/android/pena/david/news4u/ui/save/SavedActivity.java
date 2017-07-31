@@ -19,6 +19,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.home.adapter.SavedArticlesAdapter;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
+import com.android.pena.david.news4u.utils.NYTController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,8 +36,8 @@ public class SavedActivity extends AppCompatActivity
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
 
-    private Realm realm;
     private SavedArticlesAdapter savedArticlesAdapter;
+    private NYTController nytController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class SavedActivity extends AppCompatActivity
         refreshArticles.setOnRefreshListener(this);
         setDrawer();
 
-        realm = Realm.getDefaultInstance();
+        nytController = new NYTController(this,getApplication());
         setSavedArticles();
     }
 
@@ -115,7 +116,7 @@ public class SavedActivity extends AppCompatActivity
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(false);
         articlesList.setLayoutManager(linearLayoutManager);
-        RealmResults<SavedArticle> savedArticles = null;//SavedArticlesDataHelper.getSavedArticles(realm);
+        RealmResults<SavedArticle> savedArticles = nytController.getSavedArticles();
         savedArticlesAdapter = new SavedArticlesAdapter(this,savedArticles);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
                 linearLayoutManager.getOrientation());
