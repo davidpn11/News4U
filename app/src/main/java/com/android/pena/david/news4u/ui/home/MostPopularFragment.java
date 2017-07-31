@@ -55,8 +55,6 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
         mArticles.addChangeListener(new RealmChangeListener<RealmResults<Article>>() {
             @Override
             public void onChange(RealmResults<Article> articles) {
-                //Timber.d("On Change: "+mArticles.size());
-                Toast.makeText(getContext(), "On Change: "+mArticles.size(), Toast.LENGTH_SHORT).show();
                 newArticles(articles);
                 refreshArticles.setRefreshing(false);
             }
@@ -84,6 +82,7 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     private void newArticles(RealmResults<Article> new_articles){
         mArticles = new_articles;
         articlesAdapter.updateArticles(mArticles);
+        refreshArticles.setRefreshing(false);
     }
 
 

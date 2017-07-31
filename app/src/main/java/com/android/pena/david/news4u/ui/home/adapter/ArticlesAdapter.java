@@ -110,6 +110,8 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         if(article.getMedia() != null) {
             Picasso.with(mContext).load(article.getMedia().getUrl()).into(articleImg);
             ViewCompat.setTransitionName(articleImg,article.getTitle());
+        }else{
+            articleImg.setImageResource(R.mipmap.ic_no_image);
         }
     }
 

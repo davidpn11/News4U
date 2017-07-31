@@ -9,6 +9,7 @@ import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.model.Media;
 import com.android.pena.david.news4u.model.SavedArticle;
+import com.android.pena.david.news4u.model.SavedMedia;
 import com.android.pena.david.news4u.utils.generalUtils;
 
 import java.util.List;
@@ -49,11 +50,26 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
 
     @Override
     public void clearCategories() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.where(Category.class).findAll().deleteAllFromRealm();
+                Timber.d("Categories Cleared");
+            }
+        });
 
     }
 
     @Override
     public void clearSavedArticles() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.where(SavedArticle.class).findAll().deleteAllFromRealm();
+                bgRealm.where(SavedMedia.class).findAll().deleteAllFromRealm();
+                Timber.d("Saved Cleared");
+            }
+        });
 
     }
 
@@ -64,12 +80,13 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
 
     @Override
     public RealmResults<Category> getCategories() {
-        return null;
+
+        return realm.where(Category.class).findAll();
     }
 
     @Override
     public RealmResults<SavedArticle> getSavedArticles() {
-        return null;
+        return realm.where(SavedArticle.class).findAllSorted("publishedDate");
     }
 
     @Override
@@ -100,7 +117,7 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
 
     @Override
     public int countSavedArticles() {
-        return 0;
+        return realm.where(SavedArticle.class).findAll().size();
     }
 
     @Override
@@ -110,7 +127,7 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
 
     @Override
     public boolean hasSavedArticles() {
-        return false;
+        return !realm.where(SavedArticle.class).findAll().isEmpty();
     }
 
     @Override
@@ -142,18 +159,57 @@ public class NytDataHelper implements ArticleDbInterface, SavedArticleDbInterfac
     }
 
     @Override
-    public void insertSavedArticle(SavedArticle pArticle) {
+    public void insertSavedArticle(final SavedArticle pArticle) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                bgRealm.copyToRealmOrUpdate(pArticle);
 
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Timber.d("Saved Article Insert - OK");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Timber.d("SavedArticles Insert fail:" + error.getMessage());
+            }
+        });
+    }
+
+
+    @Override
+    public void deletedSavedArticle(final String id) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                RealmResults<SavedArticle> saved = realm.where(SavedArticle.class).equalTo("id",id).findAll();
+                saved.clear();
+
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Timber.d("Saved Article Insert - OK");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Timber.d("SavedArticles Insert fail:" + error.getMessage());
+            }
+        });
     }
 
     @Override
     public int countArticles() {
-        return 0;
+        return realm.where(Article.class).findAll().size();
     }
 
     @Override
     public boolean hasArticles() {
-        return false;
+        return !realm.where(Article.class).findAll().isEmpty();
     }
 
     @Override

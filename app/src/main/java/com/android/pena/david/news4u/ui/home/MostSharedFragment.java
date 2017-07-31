@@ -76,12 +76,12 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onDestroy() {
         super.onDestroy();
+        nytController.close();
     }
 
     private void newArticles(RealmResults<Article> new_articles){
         mArticles = new_articles;
-        articlesList.getRecycledViewPool().clear();
-        articlesAdapter.notifyDataSetChanged();
+        articlesAdapter.updateArticles(mArticles);
     }
 
 

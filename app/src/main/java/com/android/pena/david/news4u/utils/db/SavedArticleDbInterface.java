@@ -16,4 +16,5 @@ public interface SavedArticleDbInterface {
     int countSavedArticles();
     boolean hasSavedArticles();
     void insertSavedArticle(final SavedArticle pArticle);
+    void deletedSavedArticle(final String id);
 }
