@@ -17,6 +17,8 @@ public class generalUtils {
     public static final String EXTRA_ARTICLE_URL = "article_url_tag";
     public static final String ACTION_SAVED_ARTICLE = "action_saved_article";
     public static final String ACTION_ARTICLE = "article_action";
+    public static final String ACTION_OPEN_ARTICLE = "open_article_widget";
+    public static final String LOAD_WIDGET = "load_widget";
 
 
     public static final String VIEWED_TAG = "most_view";

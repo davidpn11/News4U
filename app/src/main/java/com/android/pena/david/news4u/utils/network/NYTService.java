@@ -29,6 +29,7 @@ public class NYTService extends JobService {
             handlerThread.start();
             Timber.e("Start job");
             NYTController nytController = new NYTController(getApplicationContext(),getApplication());
+
             nytController.checkClearArticles();
             nytController.fetchDailyArticles();
             nytController.close();

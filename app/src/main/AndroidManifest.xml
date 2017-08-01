@@ -3,7 +3,8 @@
     package="com.android.pena.david.news4u">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:name=".News4UApp"
         android:allowBackup="true"
@@ -14,9 +15,8 @@
         <activity
             android:name=".ui.home.ArticlesActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme"
-            android:launchMode="singleTop">
-
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,9 +42,20 @@
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".ui.settings.SettingsActivity"
+        <activity
+            android:name=".ui.settings.SettingsActivity"
             android:label="@string/settings_name"
-            android:parentActivityName=".ui.home.ArticlesActivity"></activity>
+            android:parentActivityName=".ui.home.ArticlesActivity" />
+
+        <receiver android:name=".widget.ArticlesListWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/articles_list_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

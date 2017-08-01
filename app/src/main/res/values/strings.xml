@@ -22,7 +22,6 @@
     <string name="action_browser">Open in Browser</string>
 
 
-
     <!--Preferences-->
     <string name="pref_browser_title">Open full articles</string>
     <string name="pref_remove_title">Auto delete old articles</string>
@@ -51,5 +50,7 @@
         <item>Technology</item>
         <item>World</item>
     </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
