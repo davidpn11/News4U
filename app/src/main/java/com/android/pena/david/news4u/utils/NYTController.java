@@ -137,8 +137,10 @@ public class NYTController {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     CategoryData cat = postSnapshot.getValue(CategoryData.class);
-                    nytApiClient.fetchMostPopularArticles(cat.getCategory());
-                    nytApiClient.fetchMostSharedArticles(cat.getCategory());
+                    if(cat.isActive()) {
+                        nytApiClient.fetchMostPopularArticles(cat.getCategory());
+                        nytApiClient.fetchMostSharedArticles(cat.getCategory());
+                    }
                 }
             }
 
@@ -158,7 +160,9 @@ public class NYTController {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                             CategoryData cat = postSnapshot.getValue(CategoryData.class);
-                            nytApiClient.fetchMostSharedArticles(cat.getCategory());
+                            if (cat.isActive()) {
+                                nytApiClient.fetchMostSharedArticles(cat.getCategory());
+                            }
                         }
                     }
 
@@ -178,7 +182,9 @@ public class NYTController {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                             CategoryData cat = postSnapshot.getValue(CategoryData.class);
-                            nytApiClient.fetchMostPopularArticles(cat.getCategory());
+                            if (cat.isActive()) {
+                                nytApiClient.fetchMostPopularArticles(cat.getCategory());
+                            }
                         }
                     }
                     @Override

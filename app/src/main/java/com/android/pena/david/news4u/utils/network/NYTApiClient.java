@@ -88,7 +88,6 @@ public class NYTApiClient {
     }
 
 
-
     public void fetchMostSharedArticles(String category){
 
         Call<List<Article>> apiCall = apiService.getMostSharedArticles(category,API_KEY_VALUE);

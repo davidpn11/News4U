@@ -81,18 +81,13 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     }
 
 
-    private void addArticle(ArticleData a){
-        articlesAdapter.addArticle(a);
-    }
-
     private void articlesListener(){
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Timber.d("onChildAdded");
                 ArticleData a = dataSnapshot.getValue(ArticleData.class);
-                addArticle(a);
-             //   mArticles.add(a);
+                articlesAdapter.addArticle(a);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -123,7 +118,6 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
 
     public void setArticlesList(){
         refreshArticles.setOnRefreshListener(this);
-        //refreshArticles.setRefreshing(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setAutoMeasureEnabled(false);
         articlesList.setLayoutManager(linearLayoutManager);
