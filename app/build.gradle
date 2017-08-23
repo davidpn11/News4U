@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'realm-android'
+
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "25.0.2"
     defaultConfig {
         buildConfigField("String", "API_KEY", API_KEY)
-        applicationId "com.android.pena.david.nytmostpopular"
+        applicationId "com.android.pena.david.news4u"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -61,9 +62,11 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
 
+    //Firebase
+    compile 'com.google.firebase:firebase-database:10.2.1'
+
     testCompile 'junit:junit:4.12'
-
-
 }
+apply plugin: 'com.google.gms.google-services'
 
 

@@ -12,10 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.home.adapter.ArticlesAdapter;
 import com.android.pena.david.news4u.utils.NYTController;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +44,8 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
 
     private NYTController nytController;
     private ArticlesAdapter articlesAdapter;
-    private RealmResults<Article> mArticles;
+    private ArrayList<ArticleData> mArticles;
+    private DatabaseReference ref;
     public MostPopularFragment() {
     }
 
@@ -50,47 +60,72 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_popular,container,false);
         ButterKnife.bind(this,view);
-
-        mArticles = nytController.getMostViewedArticles();
-        mArticles.addChangeListener(new RealmChangeListener<RealmResults<Article>>() {
-            @Override
-            public void onChange(RealmResults<Article> articles) {
-                newArticles(articles);
-                refreshArticles.setRefreshing(false);
-            }
-        });
+        //onRefresh();
+        refreshArticles.setRefreshing(false);
+        mArticles = new ArrayList<>();
+        ref = News4UApp.getArticleMostViewedEndpoint();
+        articlesListener();
         setArticlesList();
         return view;
     }
 
     @Override
     public void onRefresh() {
-        //Timber.d("Size viewed:"+nytController.countMostViewedArticles());
-        //Timber.d("Size shared:"+nytController.countMostSharedArticles());
-        mArticles = nytController.getMostViewedArticles();
+        nytController.fetchDailyViewedArticles();
         refreshArticles.setRefreshing(false);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        nytController.close();
     }
 
 
-    private void newArticles(RealmResults<Article> new_articles){
-        mArticles = new_articles;
-        articlesAdapter.updateArticles(mArticles);
-        refreshArticles.setRefreshing(false);
+    private void addArticle(ArticleData a){
+        articlesAdapter.addArticle(a);
+    }
+
+    private void articlesListener(){
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Timber.d("onChildAdded");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+                addArticle(a);
+             //   mArticles.add(a);
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Timber.d("onChildChanged");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Timber.d("onChildRemoved");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Timber.d("onChildMoved");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Timber.d("onCancelled");
+            }
+        });
     }
 
 
     public void setArticlesList(){
         refreshArticles.setOnRefreshListener(this);
-        refreshArticles.setRefreshing(true);
+        //refreshArticles.setRefreshing(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setAutoMeasureEnabled(false);
-        refreshArticles.setRefreshing(true);
         articlesList.setLayoutManager(linearLayoutManager);
         articlesAdapter = new ArticlesAdapter(getContext(),mArticles);
 

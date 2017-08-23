@@ -14,9 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Category;
+import com.android.pena.david.news4u.model.CategoryData;
 import com.android.pena.david.news4u.utils.generalUtils;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,16 +33,17 @@ import timber.log.Timber;
 
 public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapter.ViewHolder> {
 
-    private RealmResults<Category> categories;
+    private ArrayList<CategoryData> categories;
     private Context mContext;
     private Bitmap check_img;
-    protected Realm realm;
+    private DatabaseReference ref;
 
-    public CategoryGridAdapter(Context context, RealmResults<Category> categories){
+
+    public CategoryGridAdapter(Context context, ArrayList<CategoryData> categories){
         this.categories = categories;
         this.mContext = context;
         check_img = BitmapFactory.decodeResource(mContext.getResources(),R.mipmap.ic_check);
-        realm = Realm.getDefaultInstance();
+        ref = News4UApp.getCategoryEndpoint();
     }
 
 
@@ -58,16 +66,13 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
     }
 
 
-    public void closeRealm(){
-        realm.close();
-    }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.category_name) TextView name;
         @BindView(R.id.category_icon) ImageView icon;
         @BindView(R.id.category_cell) ConstraintLayout layout;
-        private Category category;
+        private CategoryData category;
         private Bitmap category_img;
 
         private ViewHolder(View itemView) {
@@ -76,7 +81,7 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
             layout.setOnClickListener(this);
 
         }
-        private void bindCategory(Category category) {
+        private void bindCategory(CategoryData category) {
             this.category = category;
             String cat_name = category.getCategory();
             name.setText(cat_name.toUpperCase());
@@ -136,17 +141,16 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
 
         private void setActiveState(final boolean active){
             try {
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        category.setActive(active);
-                        if(active){
-                            generalUtils.ImageViewAnimatedChange(mContext,icon,check_img);
-                        }else{
-                            generalUtils.ImageViewAnimatedChange(mContext,icon,category_img);
-                        }
-                    }
-                });
+               //Timber.d(ref.child(category.getCategory()).toString());
+                category.setActive(active);
+                Map<String, Object> catUpdates = new HashMap<String, Object>();
+                catUpdates.put("active",active);
+                ref.child(category.getCategory()).updateChildren(catUpdates);
+                if(active){
+                    generalUtils.ImageViewAnimatedChange(mContext,icon,check_img);
+                }else{
+                    generalUtils.ImageViewAnimatedChange(mContext,icon,category_img);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 Timber.e(e.getMessage());

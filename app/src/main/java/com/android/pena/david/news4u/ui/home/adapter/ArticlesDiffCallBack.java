@@ -4,6 +4,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.util.DiffUtil;
 
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.ArticleData;
+
+import java.util.ArrayList;
 
 import io.realm.RealmResults;
 
@@ -12,11 +15,11 @@ import io.realm.RealmResults;
  */
 
 public class ArticlesDiffCallBack extends DiffUtil.Callback {
-    private final RealmResults<Article> mOldArticles;
-    private final RealmResults<Article> mNewArticles;
+    private final ArrayList<ArticleData> mOldArticles;
+    private final ArrayList<ArticleData> mNewArticles;
 
 
-    public ArticlesDiffCallBack(RealmResults<Article> mOldArticles, RealmResults<Article> mNewArticles) {
+    public ArticlesDiffCallBack(ArrayList<ArticleData> mOldArticles, ArrayList<ArticleData> mNewArticles) {
         this.mOldArticles = mOldArticles;
         this.mNewArticles = mNewArticles;
     }
@@ -45,8 +48,8 @@ public class ArticlesDiffCallBack extends DiffUtil.Callback {
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        final Article oldA = mOldArticles.get(oldItemPosition);
-        final Article newA = mNewArticles.get(newItemPosition);
+        final ArticleData oldA = mOldArticles.get(oldItemPosition);
+        final ArticleData newA = mNewArticles.get(newItemPosition);
         return oldA.equals(newA);
     }
 }

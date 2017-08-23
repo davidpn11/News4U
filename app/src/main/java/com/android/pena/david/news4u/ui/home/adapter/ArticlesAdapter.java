@@ -17,11 +17,14 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.home.ArticlesActivity;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.squareup.picasso.Picasso;
 
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,11 +38,11 @@ import timber.log.Timber;
 
 public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHolder>{
 
-    private RealmResults<Article> articles;
+    private ArrayList<ArticleData> articles;
     private Context mContext;
     private int lastPosition;
 
-    public ArticlesAdapter(Context context, RealmResults<Article> articles){
+    public ArticlesAdapter(Context context, ArrayList<ArticleData> articles){
         //setHasStableIds(true);
         lastPosition = -1;
         this.mContext = context;
@@ -79,13 +82,18 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         }
     }
 
-    public void updateArticles(RealmResults<Article> pArticles){
+    public void updateArticles(ArrayList<ArticleData> pArticles){
         final ArticlesDiffCallBack diffCallBack = new ArticlesDiffCallBack(this.articles,pArticles);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
 
-        articles = pArticles;
-        notifyDataSetChanged();
-        //diffResult.dispatchUpdatesTo(this);
+        articles.addAll(pArticles);
+       //notifyDataSetChanged();
+        diffResult.dispatchUpdatesTo(this);
+    }
+
+    public void addArticle(ArticleData pArticle){
+        articles.add(pArticle);
+        notifyItemInserted(articles.size()-1);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -95,7 +103,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     @BindView(R.id.article_category) TextView articleCategory;
     @BindView(R.id.article_layout) ConstraintLayout layout;
 
-    private Article mArticle;
+    private ArticleData mArticle;
 
     private ViewHolder(View itemView){
         super(itemView);
@@ -103,7 +111,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         layout.setOnClickListener(this);
     }
 
-    private void bindArticle(Article article){
+    private void bindArticle(ArticleData article){
         mArticle = article;
         articleTitle.setText(article.getTitle());
         articleCategory.setText(article.getSection());

@@ -5,12 +5,22 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.preference.PreferenceManager;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.model.Category;
+import com.android.pena.david.news4u.model.CategoryData;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.utils.db.NytDataHelper;
 import com.android.pena.david.news4u.utils.network.NYTApiClient;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -26,87 +36,161 @@ public class NYTController {
     private Context mContext;
     private SharedPreferences sharedPreferences;
     private NYTApiClient nytApiClient;
-    private  NytDataHelper dataHelper;
 
 
+    ArticleData data;
     public NYTController(Context context, Application application) {
         this.mContext = context;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         nytApiClient = new NYTApiClient(context);
-        dataHelper = new NytDataHelper(context);
 
+
+
+        fetchDailyArticles();
     }
 
+    public void listener(){
 
-    public void close(){
-        Timber.d("Controller closed");
-        dataHelper.close();
-    }
-
-
-    public RealmResults<Article> getMostViewedArticles(){
-        fetchDailyViewedArticles();
-        return dataHelper.getMostViewedArticles();
-    }
-
-    public RealmResults<Article> getMostSharedArticles(){
-        fetchDailySharedArticles();
-        return dataHelper.getMostSharedArticles();
-    }
-
-//    public int countMostViewedArticles(){
-//        return dataHelper.getMostViewedArticles().size();
-//    }
+//        data = new ArticleData(getMostViewedArticles().get(1));
 //
-//    public int countMostSharedArticles(){
-//        return dataHelper.getMostSharedArticles().size();
-//    }
+//        databaseReference.child("teste").setValue(data);
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Timber.d("CHANGED:");
+//                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                    Timber.d(postSnapshot.getKey());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        //DatabaseReference ref = FirebaseDatabase.getInstance()getReference("ArticleData")
+//        databaseReference.addListenerForSingleValueEvent(
+//                new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        Timber.d("addListenerForSingleValueEvent");
+//                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                            Timber.d(postSnapshot.getKey());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        //handle databaseError
+//                    }
+//                });
+//
+//        databaseReference.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                Timber.d("new");
+//                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                    Timber.d(postSnapshot.getKey());
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//                Timber.d("changed");
+//                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                    Timber.d(postSnapshot.getKey());
+//                }
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+    }
+
 
     public void checkClearArticles(){
         if(sharedPreferences.getBoolean(mContext.getResources().getString(R.string.pref_remove_key),false)){
-            dataHelper.clearArticles();
+    //        dataHelper.clearArticles();
             Timber.d("Articles cleared");
         }
-
     }
 
     public boolean fetchDailyArticles(){
-        RealmResults<Category> categories = dataHelper.getSeletedCategories();
-        for(Category cat : categories){
-            Timber.d(cat.getCategory());
-            nytApiClient.fetchMostPopularArticles(cat.getCategory(),dataHelper);
-            nytApiClient.fetchMostSharedArticlesAsync(cat.getCategory(),dataHelper);
-        }
+
+        DatabaseReference ref = News4UApp.getCategoryEndpoint();
+        ref.addListenerForSingleValueEvent(
+        new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    CategoryData cat = postSnapshot.getValue(CategoryData.class);
+                    nytApiClient.fetchMostPopularArticles(cat.getCategory());
+                    nytApiClient.fetchMostSharedArticles(cat.getCategory());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Timber.e(databaseError.getMessage());
+            }
+        });
         return true;
     }
 
     public boolean fetchDailySharedArticles(){
-        RealmResults<Category> categories = dataHelper.getSeletedCategories();
-        for(Category cat : categories){
-            Timber.d(cat.getCategory());
-            nytApiClient.fetchMostSharedArticlesAsync(cat.getCategory(),dataHelper);
-        }
+        DatabaseReference ref = News4UApp.getCategoryEndpoint();
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                            CategoryData cat = postSnapshot.getValue(CategoryData.class);
+                            nytApiClient.fetchMostSharedArticles(cat.getCategory());
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Timber.e(databaseError.getMessage());
+                    }
+                });
         return true;
     }
 
     public boolean fetchDailyViewedArticles(){
-        RealmResults<Category> categories = dataHelper.getSeletedCategories();
-        for(Category cat : categories){
-            Timber.d(cat.getCategory());
-            nytApiClient.fetchMostPopularArticles(cat.getCategory(),dataHelper);
-        }
+        DatabaseReference ref = News4UApp.getCategoryEndpoint();
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                            CategoryData cat = postSnapshot.getValue(CategoryData.class);
+                            nytApiClient.fetchMostPopularArticles(cat.getCategory());
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Timber.e(databaseError.getMessage());
+                    }
+                });
         return true;
     }
 
 
-    public RealmResults<Category> getCategories(){
-        RealmResults<Category>  data = dataHelper.getCategories();
-        return dataHelper.getCategories();
-    }
-
-    public boolean hasCategories(){
-        return dataHelper.hasCategories();
-    }
+    NytDataHelper dataHelper;
 
     public boolean hasSelectedCategories(){
         if(dataHelper.getSeletedCategories().size() > 0){

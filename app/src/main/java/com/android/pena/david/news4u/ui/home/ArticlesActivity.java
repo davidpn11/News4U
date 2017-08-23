@@ -13,16 +13,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
+import com.android.pena.david.news4u.model.CategoryData;
 import com.android.pena.david.news4u.ui.home.adapter.NewsPagerAdapter;
 import com.android.pena.david.news4u.ui.home.Dialog.CategoryDialog;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
 import com.android.pena.david.news4u.utils.NYTController;
+import com.android.pena.david.news4u.utils.db.CategoryDataHelper;
 import com.android.pena.david.news4u.utils.network.DispatcherUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class ArticlesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,12 +54,10 @@ public class ArticlesActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.home_name));
         nytController = new NYTController(this,getApplication());
-
         setViewPager();
         setDrawer();
         dialog = new CategoryDialog();
-
-        if(!nytController.hasSelectedCategories()) dialog.show(getSupportFragmentManager(),DIALOG_TAG);
+        hasSelectedCategories();
     }
 
     @Override
@@ -120,5 +126,27 @@ public class ArticlesActivity extends AppCompatActivity
                 ArticlesActivity.this,getResources().getStringArray(R.array.tab_titles)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void hasSelectedCategories(){
+        DatabaseReference categoryDb = News4UApp.getCategoryEndpoint();
+
+        categoryDb.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        boolean has_cat = false;
+                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                            CategoryData cat = postSnapshot.getValue(CategoryData.class);
+                            if(cat.isActive()) has_cat = true;
+                        }
+                        if(!has_cat) dialog.show(getSupportFragmentManager(),DIALOG_TAG);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Timber.e(databaseError.getMessage());
+                    }
+                });
     }
 }

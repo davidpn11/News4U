@@ -51,33 +51,33 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         ButterKnife.bind(this,view);
 
 
-        mArticles = nytController.getMostSharedArticles();
-        mArticles.addChangeListener(new RealmChangeListener<RealmResults<Article>>() {
-            @Override
-            public void onChange(RealmResults<Article> articles) {
-                newArticles(articles);
-            }
-        });
-        setArticlesList();
+        //mArticles = nytController.getMostSharedArticles();
+//        mArticles.addChangeListener(new RealmChangeListener<RealmResults<Article>>() {
+//            @Override
+//            public void onChange(RealmResults<Article> articles) {
+//                newArticles(articles);
+//            }
+//        });
+//        setArticlesList();
         return view;
     }
 
     @Override
     public void onRefresh() {
-        mArticles = nytController.getMostSharedArticles();
+      //  mArticles = nytController.getMostSharedArticles();
         refreshArticles.setRefreshing(false);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        nytController.close();
+     //   nytController.close();
     }
 
     private void newArticles(RealmResults<Article> new_articles){
         mArticles = new_articles;
-        articlesAdapter.updateArticles(mArticles);
-        refreshArticles.setRefreshing(false);
+//        articlesAdapter.updateArticles(mArticles);
+//        refreshArticles.setRefreshing(false);
     }
 
 
@@ -89,7 +89,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         refreshArticles.setRefreshing(true);
         articlesList.setLayoutManager(linearLayoutManager);
 
-        articlesAdapter = new ArticlesAdapter(getContext(),mArticles);
+      //  articlesAdapter = new ArticlesAdapter(getContext(),mArticles);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
                 linearLayoutManager.getOrientation());
