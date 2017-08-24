@@ -49,6 +49,7 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
         super.onCreate(savedInstanceState);
         categoryList = new ArrayList<>();
         startCategories();
+        nytController = new NYTController(getContext(),getActivity().getApplication());
     }
 
     @Override
@@ -63,8 +64,6 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
         View view = inflater.inflate(R.layout.dialog_grid,container);
         ButterKnife.bind(this,view);
         dialogRecyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(),3));
-   //     nytController = new NYTController(getContext(),getActivity().getApplication());
-//        pCategories = nytController.getCategories();
         categoryGridAdapter = new CategoryGridAdapter(getContext(),categoryList);
         dialogRecyclerView.setAdapter(categoryGridAdapter);
         submitBtn.setOnClickListener(this);
@@ -76,6 +75,7 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        nytController.fetchDailyArticles();
         dismiss();
     }
 
