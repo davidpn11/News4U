@@ -1,4 +1,4 @@
-package com.android.pena.david.news4u.ui.home.adapter;
+package com.android.pena.david.news4u.ui.save.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,11 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,15 +36,15 @@ import timber.log.Timber;
 
 public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdapter.ViewHolder>{
 
-    private RealmResults<SavedArticle> articles;
+    private ArrayList<ArticleData> articles;
     private Context mContext;
     private int lastPosition;
 
-    public SavedArticlesAdapter(Context context, RealmResults<SavedArticle> articles){
+    public SavedArticlesAdapter(Context context){
         //setHasStableIds(true);
         lastPosition = -1;
         this.mContext = context;
-        this.articles = articles;
+        this.articles = new ArrayList<>();
     }
 
     @Override
@@ -59,8 +62,13 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
 
     @Override
     public int getItemCount() {
-        return articles.size();
+        if( articles != null){
+            return articles.size();
+        }else{
+            return 0;
+        }
     }
+
     private void setAnimation(View viewToAnimate, int position)
     {
         // If the bound view wasn't previously displayed on screen, it's animated
@@ -73,13 +81,18 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
     }
 
 
-    public void updateArticles(RealmResults<SavedArticle> articles){
+    /*public void updateArticles(RealmResults<SavedArticle> articles){
         final SavedArticlesDiffCallBack diffCallBack = new SavedArticlesDiffCallBack(this.articles,articles);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
 
         this.articles.clear();
         this.articles.addAll(articles);
         diffResult.dispatchUpdatesTo(this);
+    }*/
+
+    public void addArticle(ArticleData pArticle){
+        articles.add(pArticle);
+        notifyItemInserted(articles.size()-1);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -89,7 +102,7 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
         @BindView(R.id.article_category) TextView articleCategory;
         @BindView(R.id.article_layout) ConstraintLayout layout;
 
-        private SavedArticle mSavedArticle;
+        private ArticleData mSavedArticle;
 
         private ViewHolder(View itemView){
             super(itemView);
@@ -97,7 +110,7 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
             layout.setOnClickListener(this);
         }
 
-        private void bindSavedArticle(SavedArticle article){
+        private void bindSavedArticle(ArticleData article){
             mSavedArticle = article;
             articleTitle.setText(article.getTitle());
             articleCategory.setText(article.getSection());

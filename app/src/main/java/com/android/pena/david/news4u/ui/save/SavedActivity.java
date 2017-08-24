@@ -15,16 +15,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.model.SavedArticle;
-import com.android.pena.david.news4u.ui.home.adapter.SavedArticlesAdapter;
+import com.android.pena.david.news4u.ui.save.adapter.SavedArticlesAdapter;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
 import com.android.pena.david.news4u.utils.NYTController;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 import io.realm.RealmResults;
+import timber.log.Timber;
 
 public class SavedActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
@@ -38,16 +44,18 @@ public class SavedActivity extends AppCompatActivity
 
     private SavedArticlesAdapter savedArticlesAdapter;
     private NYTController nytController;
+    private DatabaseReference ref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        refreshArticles.setOnRefreshListener(this);
-        setDrawer();
-
         nytController = new NYTController(this,getApplication());
+        ref = News4UApp.getSavedArticleEndpoint();
+        savedArticleListener();
+        setDrawer();
         setSavedArticles();
     }
 
@@ -59,24 +67,6 @@ public class SavedActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.saved_articles, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -111,13 +101,47 @@ public class SavedActivity extends AppCompatActivity
     }
 
 
-    private void setSavedArticles(){
+    private void savedArticleListener(){
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Timber.d("onChildAdded");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+                savedArticlesAdapter.addArticle(a);
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Timber.d("onChildChanged");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
 
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Timber.d("onChildRemoved");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Timber.d("onChildMoved");
+                ArticleData a = dataSnapshot.getValue(ArticleData.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Timber.d("onCancelled");
+            }
+        });
+    }
+
+
+    private void setSavedArticles(){
+        refreshArticles.setOnRefreshListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(false);
         articlesList.setLayoutManager(linearLayoutManager);
-        RealmResults<SavedArticle> savedArticles = nytController.getSavedArticles();
-        savedArticlesAdapter = new SavedArticlesAdapter(this,savedArticles);
+        savedArticlesAdapter = new SavedArticlesAdapter(this);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(articlesList.getContext(),
                 linearLayoutManager.getOrientation());
         articlesList.addItemDecoration(dividerItemDecoration);

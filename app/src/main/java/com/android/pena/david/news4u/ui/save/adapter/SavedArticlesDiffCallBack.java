@@ -1,4 +1,4 @@
-package com.android.pena.david.news4u.ui.home.adapter;
+package com.android.pena.david.news4u.ui.save.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v7.util.DiffUtil;
