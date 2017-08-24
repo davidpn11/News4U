@@ -122,11 +122,8 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
 
         @Override
         public void onClick(View v) {
-            Timber.d("clicked");
             Intent intent = new Intent(mContext, DetailActivity.class);
-            intent.setAction(generalUtils.ACTION_SAVED_ARTICLE);
-            intent.putExtra(generalUtils.EXTRA_ARTICLE_ID, mSavedArticle.getId());
-
+            intent.putExtra(generalUtils.ARTICLE_PARCELABLE,mSavedArticle);
             if(mSavedArticle.getMedia() != null){
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation((SavedActivity) mContext,articleImg,

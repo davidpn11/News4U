@@ -2,6 +2,7 @@ package com.android.pena.david.news4u.ui.home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
@@ -21,6 +22,7 @@ import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.home.ArticlesActivity;
 import com.android.pena.david.news4u.utils.generalUtils;
+
 import com.squareup.picasso.Picasso;
 
 
@@ -125,11 +127,8 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
 
     @Override
     public void onClick(View v) {
-        Timber.d("clicked");
         Intent intent = new Intent(mContext, DetailActivity.class);
-        intent.setAction(generalUtils.ACTION_ARTICLE);
-        intent.putExtra(generalUtils.EXTRA_ARTICLE_ID,mArticle.getId());
-
+        intent.putExtra(generalUtils.ARTICLE_PARCELABLE,mArticle);
         if(mArticle.getMedia() != null){
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((ArticlesActivity) mContext,articleImg,
@@ -139,5 +138,5 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
             mContext.startActivity(intent);
         }
     }
-}
+    }
 }

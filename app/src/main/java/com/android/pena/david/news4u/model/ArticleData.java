@@ -1,12 +1,15 @@
 package com.android.pena.david.news4u.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 /**
  * Created by david on 01/08/17.
  */
 @IgnoreExtraProperties
-public class ArticleData {
+public class ArticleData implements Parcelable {
     private String id;
     private String url;
     private String adxKeywords;
@@ -19,6 +22,19 @@ public class ArticleData {
     private MediaData media;
 
     public ArticleData() {
+    }
+
+    public ArticleData(Parcel in){
+        this.id = in.readString();
+        this.url = in.readString();
+        this.adxKeywords = in.readString();
+        this.section = in.readString();
+        this.byline = in.readString();
+        this.title = in.readString();
+        this._abstract = in.readString();
+        this.publishedDate = in.readString();
+        this.selection = in.readString();
+        this.media = in.readParcelable(MediaData.class.getClassLoader());
     }
 
     public ArticleData(Article article){
@@ -39,6 +55,37 @@ public class ArticleData {
         }
 
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(url);
+        parcel.writeString(adxKeywords);
+        parcel.writeString(section);
+        parcel.writeString(byline);
+        parcel.writeString(title);
+        parcel.writeString(_abstract);
+        parcel.writeString(publishedDate);
+        parcel.writeString(selection);
+        parcel.writeParcelable(media,i);
+    }
+
+    public static final Parcelable.Creator CREATOR
+            = new Parcelable.Creator() {
+        public ArticleData createFromParcel(Parcel in) {
+            return new ArticleData(in);
+        }
+
+        public ArticleData[] newArray(int size) {
+            return new ArticleData[size];
+        }
+    };
+
 
     public String getId() {
         return id;

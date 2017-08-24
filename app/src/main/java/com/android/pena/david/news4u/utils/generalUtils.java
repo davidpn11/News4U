@@ -19,6 +19,7 @@ public class generalUtils {
     public static final String ACTION_ARTICLE = "article_action";
     public static final String ACTION_OPEN_ARTICLE = "open_article_widget";
     public static final String LOAD_WIDGET = "load_widget";
+    public static final String ARTICLE_PARCELABLE = "article_parcelable";
 
 
     public static final String VIEWED_TAG = "most_view";

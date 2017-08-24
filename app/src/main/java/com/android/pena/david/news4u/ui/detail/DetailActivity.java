@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
 import com.android.pena.david.news4u.utils.NYTController;
@@ -56,7 +57,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.goto_article) Button gotoArticleBtn;
     @BindView(R.id.save_fab) FloatingActionButton saveFab;
 
-    private Article mArticle;
+    private ArticleData mArticle;
     private Bitmap saveOn,saveOff;
     private boolean saved;
     private SharedPreferences sharedPreferences;
@@ -69,46 +70,56 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        nytController = new NYTController(this,getApplication());
-        gotoArticleBtn.setOnClickListener(this);
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Bundle extras = getIntent().getExtras();
-        String id = extras.getString(generalUtils.EXTRA_ARTICLE_ID);
-
-        if(getIntent().getAction().equals(generalUtils.ACTION_ARTICLE)) {
-            mArticle = nytController.getArticle(id);
-
-        }else if (getIntent().getAction().equals(generalUtils.ACTION_SAVED_ARTICLE)) {
-            mArticle = nytController.getSavedArticle(id);
-        }
-
-        if(mArticle != null){
-            buildArticle();
-        }
-        checkSaved(mArticle.getId());
-        saveFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!saved){
-                        SavedArticle savedArticle = new SavedArticle(mArticle);
-                        nytController.saveArticle(savedArticle);
-                        saved = true;
-                        saveFab.setImageBitmap(saveOn);
-                        Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
-                                .show();
-
-                }else{
-                        nytController.deleteArticle(mArticle.getId());
-                        saved = false;
-                        saveFab.setImageBitmap(saveOff);
-                        Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
-                                .show();
-
-                }
+            if(getIntent().hasExtra(generalUtils.ARTICLE_PARCELABLE)){
+                mArticle = getIntent().getExtras().getParcelable(generalUtils.ARTICLE_PARCELABLE);
+                buildArticle();
             }
-        });
+
+
+
+
+
+
+//        nytController = new NYTController(this,getApplication());
+//        gotoArticleBtn.setOnClickListener(this);
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//        Bundle extras = getIntent().getExtras();
+//        String id = extras.getString(generalUtils.EXTRA_ARTICLE_ID);
+//
+//        if(getIntent().getAction().equals(generalUtils.ACTION_ARTICLE)) {
+//            mArticle = nytController.getArticle(id);
+//
+//        }else if (getIntent().getAction().equals(generalUtils.ACTION_SAVED_ARTICLE)) {
+//            mArticle = nytController.getSavedArticle(id);
+//        }
+//
+//        if(mArticle != null){
+//            buildArticle();
+//        }
+//        checkSaved(mArticle.getId());
+//        saveFab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(!saved){
+//                        SavedArticle savedArticle = new SavedArticle(mArticle);
+//                        nytController.saveArticle(savedArticle);
+//                        saved = true;
+//                        saveFab.setImageBitmap(saveOn);
+//                        Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
+//                                .show();
+//
+//                }else{
+//                        nytController.deleteArticle(mArticle.getId());
+//                        saved = false;
+//                        saveFab.setImageBitmap(saveOff);
+//                        Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
+//                                .show();
+//
+//                }
+//            }
+//        });
     }
 
     @Override
