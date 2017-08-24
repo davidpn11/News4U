@@ -61,7 +61,7 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
         View view = inflater.inflate(R.layout.fragment_popular,container,false);
         ButterKnife.bind(this,view);
         //onRefresh();
-        refreshArticles.setRefreshing(false);
+        refreshArticles.setRefreshing(true);
         mArticles = new ArrayList<>();
         ref = News4UApp.getArticleMostViewedEndpoint();
         articlesListener();
@@ -88,6 +88,7 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
                 Timber.d("onChildAdded");
                 ArticleData a = dataSnapshot.getValue(ArticleData.class);
                 articlesAdapter.addArticle(a);
+                refreshArticles.setRefreshing(false);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {

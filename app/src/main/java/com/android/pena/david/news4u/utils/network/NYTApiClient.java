@@ -60,9 +60,6 @@ public class NYTApiClient {
         apiService = retrofit.create(NewYorkTimesAPI.class);
     }
 
-
-
-
     public void fetchMostPopularArticles(String category){
 
         Call<List<Article>> apiCall = apiService.getMostViewedArticles(category,API_KEY_VALUE);
@@ -73,7 +70,7 @@ public class NYTApiClient {
             public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                 List<Article> articles = response.body();
 
-                if(articles.isEmpty()) return;
+                if(articles == null) return;
 
                 for(Article article : articles){
                     refMostViewed.child(article.getId()).setValue(article);
@@ -97,6 +94,8 @@ public class NYTApiClient {
             @Override
             public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                 List<Article> articles = response.body();
+
+                if(articles == null) return;
 
                 for(Article article : articles){
                     refMostShared.child(article.getId()).setValue(article);

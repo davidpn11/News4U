@@ -46,7 +46,6 @@
         android:id="@+id/view2"
         android:backgroundTint="@color/lightgrey"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="2dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/article_category">
     </View>
@@ -55,10 +54,10 @@
         android:id="@+id/article_category"
         android:layout_width="187dp"
         android:layout_height="26dp"
+        android:gravity="end"
         style="@style/TextStyle.Category"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="2dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="2dp"
         android:layout_marginBottom="8dp" />
 </android.support.constraint.ConstraintLayout>

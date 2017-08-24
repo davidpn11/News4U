@@ -108,6 +108,7 @@ public class SavedActivity extends AppCompatActivity
                 Timber.d("onChildAdded");
                 ArticleData a = dataSnapshot.getValue(ArticleData.class);
                 savedArticlesAdapter.addArticle(a);
+                refreshArticles.setRefreshing(false);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -138,6 +139,7 @@ public class SavedActivity extends AppCompatActivity
 
     private void setSavedArticles(){
         refreshArticles.setOnRefreshListener(this);
+        refreshArticles.setRefreshing(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(false);
         articlesList.setLayoutManager(linearLayoutManager);

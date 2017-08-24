@@ -75,22 +75,13 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     }
     private void setAnimation(View viewToAnimate, int position)
     {
-//
+
         if (position > lastPosition)
         {
             Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
-    }
-
-    public void updateArticles(ArrayList<ArticleData> pArticles){
-        final ArticlesDiffCallBack diffCallBack = new ArticlesDiffCallBack(this.articles,pArticles);
-        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
-
-        articles.addAll(pArticles);
-       //notifyDataSetChanged();
-        diffResult.dispatchUpdatesTo(this);
     }
 
     public void addArticle(ArticleData pArticle){

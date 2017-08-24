@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.ArticleData;
@@ -28,6 +29,10 @@ import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
 import com.android.pena.david.news4u.utils.NYTController;
 import com.android.pena.david.news4u.utils.generalUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -60,8 +65,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private ArticleData mArticle;
     private Bitmap saveOn,saveOff;
     private boolean saved;
+    private DatabaseReference ref;
     private SharedPreferences sharedPreferences;
-    private NYTController nytController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,57 +74,38 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-            if(getIntent().hasExtra(generalUtils.ARTICLE_PARCELABLE)){
-                mArticle = getIntent().getExtras().getParcelable(generalUtils.ARTICLE_PARCELABLE);
-                buildArticle();
+        if(getIntent().hasExtra(generalUtils.ARTICLE_PARCELABLE)){
+            mArticle = getIntent().getExtras().getParcelable(generalUtils.ARTICLE_PARCELABLE);
+            buildArticle();
+        }
+
+        checkSaved();
+        saveFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!saved){
+                        ref.setValue(mArticle);
+                        saved = true;
+                        saveFab.setImageBitmap(saveOn);
+                        Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
+                                .show();
+
+                }else{
+                        ref.setValue(null);
+                       // nytController.deleteArticle(mArticle.getId());
+                        saved = false;
+                        saveFab.setImageBitmap(saveOff);
+                        Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
+                                .show();
+
+                }
             }
+        });
 
-
-
-
-
-
-//        nytController = new NYTController(this,getApplication());
-//        gotoArticleBtn.setOnClickListener(this);
-//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//        Bundle extras = getIntent().getExtras();
-//        String id = extras.getString(generalUtils.EXTRA_ARTICLE_ID);
-//
-//        if(getIntent().getAction().equals(generalUtils.ACTION_ARTICLE)) {
-//            mArticle = nytController.getArticle(id);
-//
-//        }else if (getIntent().getAction().equals(generalUtils.ACTION_SAVED_ARTICLE)) {
-//            mArticle = nytController.getSavedArticle(id);
-//        }
-//
-//        if(mArticle != null){
-//            buildArticle();
-//        }
-//        checkSaved(mArticle.getId());
-//        saveFab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(!saved){
-//                        SavedArticle savedArticle = new SavedArticle(mArticle);
-//                        nytController.saveArticle(savedArticle);
-//                        saved = true;
-//                        saveFab.setImageBitmap(saveOn);
-//                        Snackbar.make(v, getResources().getString(R.string.article_saved), Snackbar.LENGTH_SHORT)
-//                                .show();
-//
-//                }else{
-//                        nytController.deleteArticle(mArticle.getId());
-//                        saved = false;
-//                        saveFab.setImageBitmap(saveOff);
-//                        Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)
-//                                .show();
-//
-//                }
-//            }
-//        });
+        gotoArticleBtn.setOnClickListener(this);
     }
 
     @Override
@@ -127,16 +113,28 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onDestroy();
     }
 
-    private void checkSaved(String id){
+    private void checkSaved(){
         saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
         saveOff = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_off);
-        if(nytController.isSaved(id)){
-            saveFab.setImageBitmap(saveOn);
-            saved = true;
-        }else{
-            saveFab.setImageBitmap(saveOff);
-            saved = false;
-        }
+
+        ref = News4UApp.getSavedArticleEndpoint().child(mArticle.getId());
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("id").exists()) {
+                    saveFab.setImageBitmap(saveOn);
+                    saved = true;
+                }else{
+                    saveFab.setImageBitmap(saveOff);
+                    saved = false;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

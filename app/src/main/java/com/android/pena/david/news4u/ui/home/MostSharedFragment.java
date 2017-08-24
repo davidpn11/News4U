@@ -59,7 +59,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shared,container,false);
         ButterKnife.bind(this,view);
-        refreshArticles.setRefreshing(false);
+        refreshArticles.setRefreshing(true);
         mArticles = new ArrayList<>();
         ref = News4UApp.getArticleMostSharedEndpoint();
         articlesListener();
@@ -83,6 +83,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Timber.d("onChildAdded");
+                refreshArticles.setRefreshing(false);
                 ArticleData a = dataSnapshot.getValue(ArticleData.class);
                 articlesAdapter.addArticle(a);
             }
