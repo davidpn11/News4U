@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
-import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
 import com.android.pena.david.news4u.utils.generalUtils;
@@ -27,7 +26,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmResults;
 import timber.log.Timber;
 
 /**
@@ -80,15 +78,6 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
         }
     }
 
-
-    /*public void updateArticles(RealmResults<SavedArticle> articles){
-        final SavedArticlesDiffCallBack diffCallBack = new SavedArticlesDiffCallBack(this.articles,articles);
-        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallBack);
-
-        this.articles.clear();
-        this.articles.addAll(articles);
-        diffResult.dispatchUpdatesTo(this);
-    }*/
 
     public void addArticle(ArticleData pArticle){
         articles.add(pArticle);

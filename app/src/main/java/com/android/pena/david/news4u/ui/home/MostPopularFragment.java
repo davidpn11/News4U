@@ -10,11 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.home.adapter.ArticlesAdapter;
 import com.android.pena.david.news4u.utils.NYTController;
@@ -22,14 +20,11 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
 import timber.log.Timber;
 
 /**

@@ -23,11 +23,8 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.ArticleData;
-import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
-import com.android.pena.david.news4u.utils.NYTController;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,7 +40,6 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 import timber.log.Timber;
 
 import static com.android.pena.david.news4u.utils.generalUtils.EXTRA_ARTICLE_URL;

@@ -19,10 +19,6 @@ public class MediaData implements Parcelable {
         this.format = in.readString();
     }
 
-    public MediaData(Media media) {
-        this.url = media.getUrl();
-        this.format = media.getFormat();
-    }
 
     public String getUrl() {
         return url;

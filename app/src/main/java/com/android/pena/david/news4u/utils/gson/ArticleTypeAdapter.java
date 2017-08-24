@@ -2,8 +2,9 @@ package com.android.pena.david.news4u.utils.gson;
 
 import android.app.ProgressDialog;
 
-import com.android.pena.david.news4u.model.Article;
-import com.android.pena.david.news4u.model.Media;
+
+import com.android.pena.david.news4u.model.ArticleData;
+import com.android.pena.david.news4u.model.MediaData;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -25,16 +26,16 @@ public class ArticleTypeAdapter extends TypeAdapter {
 
 
     @Override
-    public List<Article> read(JsonReader in) throws IOException {
+    public List<ArticleData> read(JsonReader in) throws IOException {
 
-        final List<Article> article_list = new ArrayList<>();
+        final List<ArticleData> article_list = new ArrayList<>();
         in.beginObject();
         while(in.hasNext()){
             switch (in.nextName()){
                 case "results":
                     in.beginArray();
                     while(in.hasNext()){
-                        final Article article = new Article();
+                        final ArticleData article = new ArticleData();
                         in.beginObject();
                         while (in.hasNext()){
                             switch (in.nextName()){
@@ -74,7 +75,7 @@ public class ArticleTypeAdapter extends TypeAdapter {
                                         break;
                                     }
                                     in.beginArray();
-                                    final ArrayList<Media> media_list = new ArrayList<>();
+                                    final ArrayList<MediaData> media_list = new ArrayList<>();
                                     while(in.hasNext()){
                                         in.beginObject();
                                         while(in.hasNext()){
@@ -83,7 +84,7 @@ public class ArticleTypeAdapter extends TypeAdapter {
                                                     in.beginArray();
                                                     while(in.hasNext()){
                                                         in.beginObject();
-                                                        final Media media = new Media();
+                                                        final MediaData media = new MediaData();
                                                         while(in.hasNext()){
                                                             switch (in.nextName()){
                                                                 case "url":
@@ -110,7 +111,7 @@ public class ArticleTypeAdapter extends TypeAdapter {
                                         in.endObject();
                                     }
                                     in.endArray();
-                                    for(Media m : media_list){
+                                    for(MediaData m : media_list){
                                         if(m.getFormat().equals("mediumThreeByTwo440")){
                                             article.setMedia(m);
                                             break;

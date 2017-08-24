@@ -1,6 +1,6 @@
 package com.android.pena.david.news4u.utils.network;
 
-import com.android.pena.david.news4u.model.Article;
+import com.android.pena.david.news4u.model.ArticleData;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import retrofit2.http.Query;
 public interface NewYorkTimesAPI {
 
     @GET("mostviewed/{category}/1.json")
-    Call<List<Article>> getMostViewedArticles(@Path("category") String category,
-                                              @Query("api-key") String apiKey);
+    Call<List<ArticleData>> getMostViewedArticles(@Path("category") String category,
+                                                  @Query("api-key") String apiKey);
 
     @GET("mostshared/{category}/1.json")
-    Call<List<Article>> getMostSharedArticles(@Path("category") String category,
+    Call<List<ArticleData>> getMostSharedArticles(@Path("category") String category,
                                               @Query("api-key") String apiKey);
 }

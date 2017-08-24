@@ -1,7 +1,6 @@
 package com.android.pena.david.news4u.utils.db;
 
 import com.android.pena.david.news4u.News4UApp;
-import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.model.CategoryData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +40,6 @@ public class CategoryDataHelper {
         });
         return null;
     }
-
 
     public static void updateCategory(String id){
 

@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
-import com.android.pena.david.news4u.model.SavedArticle;
 import com.android.pena.david.news4u.ui.save.adapter.SavedArticlesAdapter;
 import com.android.pena.david.news4u.ui.settings.SettingsActivity;
 import com.android.pena.david.news4u.utils.NYTController;
@@ -29,7 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmResults;
 import timber.log.Timber;
 
 public class SavedActivity extends AppCompatActivity

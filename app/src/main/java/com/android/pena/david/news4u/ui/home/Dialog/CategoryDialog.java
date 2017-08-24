@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.model.CategoryData;
 import com.android.pena.david.news4u.utils.NYTController;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmResults;
+
 import timber.log.Timber;
 
 /**
@@ -37,7 +36,6 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
 
     @BindView(R.id.dialog_recyclerview) RecyclerView dialogRecyclerView;
     @BindView(R.id.btn_submit) Button submitBtn;
-    private RealmResults<Category> pCategories;
     private ArrayList<CategoryData> categoryList;
     private  CategoryGridAdapter categoryGridAdapter;
     private NYTController nytController;

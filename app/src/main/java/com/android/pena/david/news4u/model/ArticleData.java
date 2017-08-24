@@ -37,25 +37,6 @@ public class ArticleData implements Parcelable {
         this.media = in.readParcelable(MediaData.class.getClassLoader());
     }
 
-    public ArticleData(Article article){
-        this.id = article.getId();
-        this.url = article.getUrl();
-        this.adxKeywords = article.getAdxKeywords();
-        this.section = article.getSection();
-        this.byline = article.getByline();
-        this.title = article.getTitle();
-        this._abstract = article.get_abstract();
-        this.publishedDate = article.getPublishedDate();
-        this.selection = article.getSelection();
-        if(article.getMedia() == null){
-            this.media = null;
-        }else{
-            this.media =
-                    new MediaData(article.getMedia());
-        }
-
-    }
-
     @Override
     public int describeContents() {
         return 0;

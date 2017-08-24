@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.model.Article;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.home.adapter.ArticlesAdapter;
 import com.android.pena.david.news4u.utils.NYTController;
@@ -26,8 +25,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
 import timber.log.Timber;
 
 /**

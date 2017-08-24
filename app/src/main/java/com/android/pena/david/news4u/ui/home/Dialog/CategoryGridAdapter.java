@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.model.Category;
 import com.android.pena.david.news4u.model.CategoryData;
 import com.android.pena.david.news4u.utils.generalUtils;
 import com.google.firebase.database.DatabaseReference;
@@ -27,8 +26,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
-import io.realm.RealmResults;
+
 import timber.log.Timber;
 
 public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapter.ViewHolder> {
