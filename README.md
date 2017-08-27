@@ -7,11 +7,11 @@ Display news collected from the NewYorkTimesAPI divided by category.
 
 ## Screens
 
-![screen](screenshots/screen1.png =100x300)
+![screen](screenshots/screen1.png)
 
-![screen](screenshots/screen2.png =100x300)
+![screen](screenshots/screen2.png)
 
-![screen](screenshots/screen3.png =100x300)
+![screen](screenshots/screen3.png)
 
 
 ## Libraries:
