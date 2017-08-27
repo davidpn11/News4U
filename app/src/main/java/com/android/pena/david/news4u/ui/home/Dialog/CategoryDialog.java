@@ -49,7 +49,7 @@ public class CategoryDialog extends DialogFragment implements View.OnClickListen
         super.onCreate(savedInstanceState);
         categoryList = new ArrayList<>();
         startCategories();
-        nytController = new NYTController(getContext(),getActivity().getApplication());
+        nytController = new NYTController(getContext());
     }
 
     @Override

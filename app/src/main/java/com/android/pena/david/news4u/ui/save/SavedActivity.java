@@ -50,7 +50,7 @@ public class SavedActivity extends AppCompatActivity
         setContentView(R.layout.activity_saved);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        nytController = new NYTController(this,getApplication());
+        nytController = new NYTController(this);
         ref = News4UApp.getSavedArticleEndpoint();
         savedArticleListener();
         setDrawer();

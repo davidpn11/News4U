@@ -53,7 +53,7 @@ public class ArticlesActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.home_name));
-        nytController = new NYTController(this,getApplication());
+        nytController = new NYTController(this);
         setViewPager();
         setDrawer();
         dialog = new CategoryDialog();

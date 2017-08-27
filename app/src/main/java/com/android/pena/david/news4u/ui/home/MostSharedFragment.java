@@ -48,7 +48,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        nytController = new NYTController(getContext(),getActivity().getApplication());
+        nytController = new NYTController(getContext());
     }
 
     @Nullable

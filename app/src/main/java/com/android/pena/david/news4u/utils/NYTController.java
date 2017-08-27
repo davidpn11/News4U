@@ -23,15 +23,11 @@ import timber.log.Timber;
 public class NYTController {
 
 
-    private Context mContext;
-    private SharedPreferences sharedPreferences;
+
     private NYTApiClient nytApiClient;
 
-    public NYTController(Context context, Application application) {
-        this.mContext = context;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    public NYTController(Context context) {
         nytApiClient = new NYTApiClient(context);
-        //fetchDailyArticles();
     }
 
 

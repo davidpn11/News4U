@@ -44,7 +44,7 @@ public class DispatcherUtils {
     }
 
     private static JobInfo getJobInfo(final int id, final long hour, final ComponentName name) {
-        final long interval = TimeUnit.HOURS.toMillis(hour); // run every hour
+        final long interval = TimeUnit.DAYS.toMillis(1); // run every day
         Timber.d(String.valueOf(interval));
         final boolean isPersistent = true; // persist through boot
         final int networkType = JobInfo.NETWORK_TYPE_ANY; // Requires some sort of connectivity
