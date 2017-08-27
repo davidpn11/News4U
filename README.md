@@ -9,6 +9,8 @@ Display news collected from the NewYorkTimesAPI divided by category.
 
 ![screen](screenshots/screen1.png)
 
+<img src="screenshots/screen1.png" height="200" width="100">
+
 ![screen](screenshots/screen2.png)
 
 ![screen](screenshots/screen3.png)
