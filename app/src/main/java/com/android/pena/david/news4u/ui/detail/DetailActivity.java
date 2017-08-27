@@ -26,6 +26,8 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
 import com.android.pena.david.news4u.utils.generalUtils;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +59,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.goto_article) Button gotoArticleBtn;
     @BindView(R.id.save_fab) FloatingActionButton saveFab;
+    @BindView(R.id.adView) AdView mAdView;
 
     private ArticleData mArticle;
     private Bitmap saveOn,saveOff;
@@ -102,6 +105,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         });
 
         gotoArticleBtn.setOnClickListener(this);
+        setAdView();
     }
 
     @Override
@@ -112,7 +116,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private void checkSaved(){
         saveOn = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_on);
         saveOff = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_save_off);
-
         ref = News4UApp.getSavedArticleEndpoint().child(mArticle.getId());
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -131,6 +134,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+
+    }
+
+    private void setAdView(){
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override

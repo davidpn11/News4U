@@ -52,5 +52,7 @@
     </string-array>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="empty_view_text">No articles!</string>
+    <string name="banner_ad_unit_id">ca-app-pub-4254834503292241/1241284662</string>
 
 </resources>

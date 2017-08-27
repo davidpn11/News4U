@@ -57,6 +57,8 @@ public class ArticlesActivity extends AppCompatActivity
         setViewPager();
         setDrawer();
         dialog = new CategoryDialog();
+        int width = getResources().getDimensionPixelSize(R.dimen.popup_width);
+        int height = getResources().getDimensionPixelSize(R.dimen.popup_height);
         hasSelectedCategories();
     }
 

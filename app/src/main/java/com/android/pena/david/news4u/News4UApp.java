@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.android.pena.david.news4u.model.CategoryData;
 import com.android.pena.david.news4u.utils.network.DispatcherUtils;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +34,7 @@ public class News4UApp extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+        MobileAds.initialize(this,getResources().getString(R.string.banner_ad_unit_id));
 
         firebase = FirebaseDatabase.getInstance();
         firebase.setPersistenceEnabled(true);
