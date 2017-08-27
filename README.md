@@ -8,9 +8,9 @@ Display news collected from the NewYorkTimesAPI divided by category.
 ## Screens
 
 
-<img src="screenshots/screen1.png" height="500" width="200">
-<img src="screenshots/screen2.png" height="500" width="200">
-<img src="screenshots/screen3.png" height="500" width="200">
+<img src="screenshots/screen1.png" height="500" width="250">
+<img src="screenshots/screen2.png" height="500" width="250">
+<img src="screenshots/screen3.png" height="500" width="250">
 
 ## Libraries:
 * [ButterKnife](https://github.com/JakeWharton/butterknife)
