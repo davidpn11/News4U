@@ -20,7 +20,7 @@ Display news collected from the NewYorkTimesAPI divided by category.
 * [Picasso](https://github.com/square/picasso)
 * [Firebase Realtime Database](https://console.firebase.google.com/)
 
-##How to use:
+## How to use:
 
 * Get a [NYT Most Popular API key](https://developer.nytimes.com/signup) then add your API key to gradle.properties as:
 API_KEY = “abcdef”
