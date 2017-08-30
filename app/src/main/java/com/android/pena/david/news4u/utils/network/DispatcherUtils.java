@@ -19,12 +19,14 @@ import timber.log.Timber;
  * Created by david on 25/07/17.
  */
 
-public class DispatcherUtils {
+public final class DispatcherUtils {
 
     private static final int REMINDER_INTERVAL_HOURS = 24;
     private static final int REMINDER_JOB_ID = 101;
 
     private static boolean sInitialized;
+
+    private DispatcherUtils() {}
 
     synchronized public static void scheduleNYTReminder(@NonNull final Context context) {
 

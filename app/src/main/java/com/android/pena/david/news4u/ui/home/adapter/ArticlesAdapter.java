@@ -18,7 +18,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.home.ArticlesActivity;
-import com.android.pena.david.news4u.utils.generalUtils;
+import com.android.pena.david.news4u.utils.GeneralUtils;
 
 import com.squareup.picasso.Picasso;
 
@@ -113,7 +113,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(mContext, DetailActivity.class);
-        intent.putExtra(generalUtils.ARTICLE_PARCELABLE,mArticle);
+        intent.putExtra(GeneralUtils.ARTICLE_PARCELABLE,mArticle);
         if(mArticle.getMedia() != null){
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((ArticlesActivity) mContext,articleImg,

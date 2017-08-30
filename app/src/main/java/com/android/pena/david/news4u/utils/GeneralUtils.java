@@ -10,7 +10,7 @@ import android.widget.ImageView;
  * Created by david on 12/07/17.
  */
 
-public class generalUtils {
+public class GeneralUtils {
 
     public static final String EXTRA_ARTICLE_TITLE = "article_title_tag";
     public static final String EXTRA_ARTICLE_ID = "article_id_tag";

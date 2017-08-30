@@ -4,23 +4,17 @@ package com.android.pena.david.news4u.utils.network;
 
 import android.app.job.JobParameters;
 import android.app.job.JobService;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.v7.preference.PreferenceManager;
 
 
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
-import com.android.pena.david.news4u.ui.detail.DetailActivity;
-import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
 import com.android.pena.david.news4u.utils.NYTController;
 import com.google.firebase.database.DatabaseReference;
 
 import timber.log.Timber;
-
-import static com.android.pena.david.news4u.utils.generalUtils.EXTRA_ARTICLE_URL;
 
 /**
  * Created by david on 24/07/17.

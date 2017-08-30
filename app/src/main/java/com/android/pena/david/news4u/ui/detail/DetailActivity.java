@@ -25,7 +25,7 @@ import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.fullarticle.FullArticleActivity;
-import com.android.pena.david.news4u.utils.generalUtils;
+import com.android.pena.david.news4u.utils.GeneralUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
@@ -44,7 +44,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
-import static com.android.pena.david.news4u.utils.generalUtils.EXTRA_ARTICLE_URL;
+import static com.android.pena.david.news4u.utils.GeneralUtils.EXTRA_ARTICLE_URL;
 
 /**
  * Created by david on 17/07/17.
@@ -76,8 +76,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        if(getIntent().hasExtra(generalUtils.ARTICLE_PARCELABLE)){
-            mArticle = getIntent().getExtras().getParcelable(generalUtils.ARTICLE_PARCELABLE);
+        if(getIntent().hasExtra(GeneralUtils.ARTICLE_PARCELABLE)){
+            mArticle = getIntent().getExtras().getParcelable(GeneralUtils.ARTICLE_PARCELABLE);
             buildArticle();
         }
 
@@ -94,7 +94,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
                 }else{
                         ref.setValue(null);
-                       // nytController.deleteArticle(mArticle.getId());
                         saved = false;
                         saveFab.setImageBitmap(saveOff);
                         Snackbar.make(v, getResources().getString(R.string.article_deleted), Snackbar.LENGTH_SHORT)

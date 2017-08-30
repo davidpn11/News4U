@@ -36,6 +36,7 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     @BindView(R.id.refresh_articles) SwipeRefreshLayout refreshArticles;
     @BindView(R.id.articles_list) RecyclerView articlesList;
 
+    private static final String STATE_POPULAR_ARRAY = "MOST_POPULAR_ARTICLES_ARRAY";
 
     private NYTController nytController;
     private ArticlesAdapter articlesAdapter;
@@ -55,18 +56,33 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_popular,container,false);
         ButterKnife.bind(this,view);
-        //onRefresh();
         refreshArticles.setRefreshing(true);
-        mArticles = new ArrayList<>();
         ref = News4UApp.getArticleMostViewedEndpoint();
-        articlesListener();
+        if(savedInstanceState == null){
+            mArticles = new ArrayList<>();
+        }else{
+            mArticles = savedInstanceState.getParcelableArrayList(STATE_POPULAR_ARRAY);
+            refreshArticles.setRefreshing(false);
+        }
+        if (mArticles.isEmpty()) {
+            articlesListener();
+        }
         setArticlesList();
         return view;
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(!mArticles.isEmpty()){
+            outState.putParcelableArrayList(STATE_POPULAR_ARRAY,mArticles);
+        }
+    }
+
+    @Override
     public void onRefresh() {
         nytController.fetchDailyViewedArticles();
+        articlesListener();
         refreshArticles.setRefreshing(false);
     }
 
@@ -82,7 +98,8 @@ public class MostPopularFragment extends Fragment implements SwipeRefreshLayout.
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Timber.d("onChildAdded");
                 ArticleData a = dataSnapshot.getValue(ArticleData.class);
-                articlesAdapter.addArticle(a);
+               // articlesAdapter.addArticle(a);
+                mArticles.add(a);
                 refreshArticles.setRefreshing(false);
             }
             @Override

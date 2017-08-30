@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +18,13 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.save.SavedActivity;
-import com.android.pena.david.news4u.utils.generalUtils;
+import com.android.pena.david.news4u.utils.GeneralUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * Created by david on 24/07/17.
@@ -112,7 +110,7 @@ public class SavedArticlesAdapter extends RecyclerView.Adapter<SavedArticlesAdap
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(mContext, DetailActivity.class);
-            intent.putExtra(generalUtils.ARTICLE_PARCELABLE,mSavedArticle);
+            intent.putExtra(GeneralUtils.ARTICLE_PARCELABLE,mSavedArticle);
             if(mSavedArticle.getMedia() != null){
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation((SavedActivity) mContext,articleImg,

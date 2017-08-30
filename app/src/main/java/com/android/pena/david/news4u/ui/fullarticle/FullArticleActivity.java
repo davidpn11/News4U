@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 
 import com.android.pena.david.news4u.R;
@@ -19,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
-import static com.android.pena.david.news4u.utils.generalUtils.EXTRA_ARTICLE_URL;
+import static com.android.pena.david.news4u.utils.GeneralUtils.EXTRA_ARTICLE_URL;
 
 
 public class FullArticleActivity extends AppCompatActivity implements View.OnClickListener {
@@ -77,7 +76,7 @@ public class FullArticleActivity extends AppCompatActivity implements View.OnCli
 
     private void shareArticle(){
 
-        String msg = "Hey! Check out this article: "+url;
+        String msg = getResources().getString(R.string.article_share)+url;
         Intent it = new Intent(android.content.Intent.ACTION_SEND);
         it.setType("text/plain");
         it.putExtra(android.content.Intent.EXTRA_SUBJECT, "Popular Movies");

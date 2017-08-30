@@ -1,4 +1,4 @@
-package com.android.pena.david.news4u.ui.home.Dialog;
+package com.android.pena.david.news4u.ui.home.dialog;
 
 /**
  * Created by david on 14/07/17.
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.CategoryData;
-import com.android.pena.david.news4u.utils.generalUtils;
+import com.android.pena.david.news4u.utils.GeneralUtils;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
@@ -145,9 +145,9 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
                 catUpdates.put("active",active);
                 ref.child(category.getCategory()).updateChildren(catUpdates);
                 if(active){
-                    generalUtils.ImageViewAnimatedChange(mContext,icon,check_img);
+                    GeneralUtils.ImageViewAnimatedChange(mContext,icon,check_img);
                 }else{
-                    generalUtils.ImageViewAnimatedChange(mContext,icon,category_img);
+                    GeneralUtils.ImageViewAnimatedChange(mContext,icon,category_img);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

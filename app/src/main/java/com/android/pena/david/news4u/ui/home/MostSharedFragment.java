@@ -36,6 +36,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     @BindView(R.id.refresh_articles) SwipeRefreshLayout refreshArticles;
     @BindView(R.id.articles_list) RecyclerView articlesList;
 
+    private static final String STATE_SHARED_ARRAY = "MOST_SHARED_ARTICLES_ARRAY";
 
     private NYTController nytController;
     private ArticlesAdapter articlesAdapter;
@@ -49,6 +50,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         nytController = new NYTController(getContext());
+
     }
 
     @Nullable
@@ -57,9 +59,18 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
         View view = inflater.inflate(R.layout.fragment_shared,container,false);
         ButterKnife.bind(this,view);
         refreshArticles.setRefreshing(true);
-        mArticles = new ArrayList<>();
+
         ref = News4UApp.getArticleMostSharedEndpoint();
-        articlesListener();
+        if(savedInstanceState == null){
+            mArticles = new ArrayList<>();
+        }else{
+            mArticles = savedInstanceState.getParcelableArrayList(STATE_SHARED_ARRAY);
+            refreshArticles.setRefreshing(false);
+        }
+
+        if (mArticles.isEmpty()) {
+            articlesListener();
+        }
         setArticlesList();
         return view;
     }
@@ -67,8 +78,19 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onRefresh() {
         nytController.fetchDailySharedArticles();
+        articlesListener();
         refreshArticles.setRefreshing(false);
     }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(!mArticles.isEmpty()){
+            outState.putParcelableArrayList(STATE_SHARED_ARRAY,mArticles);
+        }
+    }
+
 
     @Override
     public void onDestroy() {
@@ -82,7 +104,7 @@ public class MostSharedFragment extends Fragment implements SwipeRefreshLayout.O
                 Timber.d("onChildAdded");
                 refreshArticles.setRefreshing(false);
                 ArticleData a = dataSnapshot.getValue(ArticleData.class);
-                articlesAdapter.addArticle(a);
+                mArticles.add(a);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {

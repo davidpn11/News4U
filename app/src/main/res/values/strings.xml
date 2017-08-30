@@ -22,6 +22,11 @@
     <string name="action_browser">Open in Browser</string>
 
 
+    <!--Descriptions-->
+    <string name="description_detail">Article Image</string>
+    <string name="article_share">Hey! Check out this article: </string>
+
+
     <!--Preferences-->
     <string name="pref_browser_title">Open full articles</string>
     <string name="pref_remove_title">Auto delete old articles</string>
