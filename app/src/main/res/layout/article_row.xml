@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="20dp"
+        android:contentDescription="@string/description_list_row"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="20dp" />
 

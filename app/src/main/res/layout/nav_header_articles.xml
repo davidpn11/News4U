@@ -26,6 +26,7 @@
     <ImageView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
+        android:contentDescription="@string/description_drawer"
         android:layout_height="55dp"
         android:src="@drawable/ic_nyt" />
 

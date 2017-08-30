@@ -10,25 +10,73 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 
+import com.android.pena.david.news4u.News4UApp;
 import com.android.pena.david.news4u.R;
+import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.home.ArticlesActivity;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.io.EOFException;
+import java.io.IOException;
 
 /**
  * Implementation of App Widget functionality.
  */
 public class ArticlesListWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+    private static ArticleData widgetArticle;
+
+
+    static void updateAppWidget(final Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
         // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.articles_list_widget);
+        final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.articles_list_widget);
+        DatabaseReference ref = News4UApp.getArticleMostViewedEndpoint();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren()){
+                    for(DataSnapshot data: dataSnapshot.getChildren()){
+                        widgetArticle = data.getValue(ArticleData.class);
+                        try {
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        views.setBitmap(R.id.widget_img,widgetArticle.getId(),Picasso.with(context).load(widgetArticle.getUrl()).get());
+                                        views.setTextViewText(R.id.widget_title,widgetArticle.getTitle());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
+
+
+                            return;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            return;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         Intent it = new Intent(context, ArticlesActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context,0, it, 0);
-
-        views.setOnClickPendingIntent(R.id.app_widget,pendingIntent);
+        views.setOnClickPendingIntent(R.id.widget_img,pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

@@ -2,12 +2,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/widget_background"
+    android:id="@+id/app_widget"
     android:padding="@dimen/widget_margin">
 
     <ImageView
-        android:id="@+id/app_widget"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/ic_launcher"/>
+        android:id="@+id/widget_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/widget_text"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/widget_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="David pena"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_alignTop="@+id/widget_img"
+        android:layout_toEndOf="@+id/widget_img" />
 
 </RelativeLayout>
