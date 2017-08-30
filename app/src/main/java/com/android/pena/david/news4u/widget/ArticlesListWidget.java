@@ -15,6 +15,7 @@ import com.android.pena.david.news4u.R;
 import com.android.pena.david.news4u.model.ArticleData;
 import com.android.pena.david.news4u.ui.detail.DetailActivity;
 import com.android.pena.david.news4u.ui.home.ArticlesActivity;
+import com.android.pena.david.news4u.utils.GeneralUtils;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,37 +34,32 @@ public class ArticlesListWidget extends AppWidgetProvider {
     private static ArticleData widgetArticle;
 
 
-    static void updateAppWidget(final Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    static void updateAppWidget(final Context context,final AppWidgetManager appWidgetManager,
+                                final int appWidgetId) {
 
         // Construct the RemoteViews object
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.articles_list_widget);
         DatabaseReference ref = News4UApp.getArticleMostViewedEndpoint();
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 if(dataSnapshot.hasChildren()){
                     for(DataSnapshot data: dataSnapshot.getChildren()){
                         widgetArticle = data.getValue(ArticleData.class);
-                        try {
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        views.setBitmap(R.id.widget_img,widgetArticle.getId(),Picasso.with(context).load(widgetArticle.getUrl()).get());
-                                        views.setTextViewText(R.id.widget_title,widgetArticle.getTitle());
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }).start();
+                        views.setTextViewText(R.id.widget_title,widgetArticle.getTitle());
 
+                            Picasso.with(context).load(widgetArticle.getUrl()).into(views,R.id.widget_img,new int[] {appWidgetId});
+//                            views.setBitmap(R.id.widget_img,widgetArticle.getId(),Picasso.with(context).load(widgetArticle.getUrl()).get());
+                        Intent it = new Intent(context, DetailActivity.class);
+                        it.putExtra(GeneralUtils.ARTICLE_PARCELABLE,widgetArticle);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(context,0, it, PendingIntent.FLAG_UPDATE_CURRENT);
+                        views.setOnClickPendingIntent(R.id.app_widget,pendingIntent);
 
-                            return;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            return;
-                        }
+                        // Instruct the widget manager to update the widget
+                        appWidgetManager.updateAppWidget(appWidgetId, views);
+
                     }
                 }
             }
@@ -74,12 +70,7 @@ public class ArticlesListWidget extends AppWidgetProvider {
             }
         });
 
-        Intent it = new Intent(context, ArticlesActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,0, it, 0);
-        views.setOnClickPendingIntent(R.id.widget_img,pendingIntent);
 
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @Override
